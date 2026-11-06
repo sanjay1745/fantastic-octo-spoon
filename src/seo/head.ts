@@ -1,4 +1,5 @@
 import { formatAddressLines, type Location, openLocations } from '../data/locations'
+import { founding } from '../data/about'
 import { site } from '../data/site'
 import { absoluteUrl, asset } from '../lib/url'
 
@@ -100,6 +101,8 @@ export function organizationJsonLd(): object {
     url: absoluteUrl('/'),
     logo: `${import.meta.env.VITE_SITE_ORIGIN}${asset('brand/icon-512.png')}`,
     email: site.email,
+    foundingDate: founding.date,
+    founder: { '@type': 'Person', name: site.founder.name },
     sameAs: site.socials.map((s) => s.url),
   }
 }

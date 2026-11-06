@@ -43,6 +43,10 @@ export const images = {
   'gallery-mural': { file: 'mural and cardio.jpg' },
   'gallery-floor-2': { file: '20261103SSM-01.jpg' },
 
+  // About
+  'about-founder': { file: 'jeremy coaching.jpg' },
+  'about-community': { file: '20250728SSM-43.jpg' },
+
   // Coach portraits
   'coach-cinthia-beltran': { file: 'cinthia.jpg' },
   'coach-stephanie-pleasas': { file: 'coach steph.jpg' },

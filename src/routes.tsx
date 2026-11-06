@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react'
 import { locations, primaryLocation } from './data/locations'
 import { site } from './data/site'
+import About from './pages/About'
 import Coaching from './pages/Coaching'
 import Home from './pages/Home'
 import LocationDetail from './pages/LocationDetail'
@@ -78,9 +79,9 @@ export const routes: AppRoute[] = [
     meta: {
       path: '/about',
       title: 'About',
-      description: `The story behind ${site.name}, founded by ${site.founder.name}, and the team that makes it. ${site.tagline}`,
+      description: `${site.name} opened in Roseville, CA in July 2025. Our story, our mission and the team behind it. ${site.tagline}`,
     },
-    element: <Stub eyebrow="About" title={site.tagline} />,
+    element: <About />,
   },
   {
     path: '/locations',
