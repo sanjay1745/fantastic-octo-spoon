@@ -21,7 +21,8 @@ const ffmpeg = process.env.FFMPEG || 'ffmpeg'
 fs.mkdirSync(outDir, { recursive: true })
 
 const mtime = (f) => (fs.existsSync(f) ? fs.statSync(f).mtimeMs : 0)
-const fresh = (out, src) => !force && mtime(out) > mtime(src) && mtime(out) > mtime(path.join(root, 'scripts', 'media.config.mjs'))
+// Changed a slot's source or timestamp in media.config.mjs? Re-run with --force.
+const fresh = (out, src) => !force && mtime(out) > mtime(src)
 
 function hasFfmpeg() {
   try {

@@ -10,4 +10,6 @@ export default defineConfig({
     'import.meta.env.VITE_SITE_ORIGIN': JSON.stringify(siteConfig.origin),
   },
   plugins: [react()],
+  // Allow `vite preview` to be shared through a temporary Cloudflare tunnel
+  preview: { allowedHosts: ['.trycloudflare.com'] },
 })

@@ -1,0 +1,32 @@
+.heroActions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-2); }
+
+.plans { display: grid; gap: var(--space-4); }
+.passesSection { padding-top: 0; }
+.passes { display: grid; gap: var(--space-4); }
+
+.band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+  padding: clamp(var(--space-6), 4vw, var(--space-7));
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(120deg, var(--color-surface-2), var(--color-surface));
+}
+.band h2 { margin-bottom: var(--space-2); }
+
+.faq { border-top: 1px solid var(--color-line); }
+.faqGrid { display: grid; gap: var(--space-2); }
+
+@media (min-width: 640px) {
+  .plans, .passes { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1000px) {
+  .faqGrid { grid-template-columns: 2fr 3fr; gap: var(--space-8); align-items: start; }
+}
+@media (min-width: 1100px) {
+  .plans { grid-template-columns: repeat(4, 1fr); }
+  .passes { max-width: calc(50% + var(--space-2)); }
+}

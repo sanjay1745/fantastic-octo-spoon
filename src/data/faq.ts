@@ -1,4 +1,5 @@
 import { formatAddressLines, formatHours, primaryLocation as loc } from './locations'
+import { getClub } from './coaching'
 import { site } from './site'
 
 /** FAQs. Answers pull prices/hours/address from data so they never drift out of sync. */
@@ -60,6 +61,24 @@ export const faqs: Faq[] = [
     q: 'Do you offer personal training?',
     a: 'Yes. We offer in-person personal training and online coaching. Pricing depends on your goals and schedule, so it is provided after a free consultation.',
     tags: ['home', 'coaching'],
+  },
+  {
+    id: 'online-includes',
+    q: "What's included with online coaching?",
+    a: `Lifestyle coaching clients get free access to ${getClub('fit-club').name}. Contest prep clients get free access to ${getClub('bodybuilding-club').name}, our Tuesday-night training and posing session.`,
+    tags: ['coaching'],
+  },
+  {
+    id: 'fit-club-solo',
+    q: `Can I join ${getClub('fit-club').name} without coaching?`,
+    a: `Yes. ${getClub('fit-club').name} is $${getClub('fit-club').price}/mo on its own, or included free with lifestyle coaching.`,
+    tags: ['coaching'],
+  },
+  {
+    id: 'bb-club',
+    q: `Who can join ${getClub('bodybuilding-club').name}?`,
+    a: `${getClub('bodybuilding-club').name} is exclusive to Team Stoik contest prep clients, and it's free for them.`,
+    tags: ['coaching'],
   },
   {
     id: 'hours',

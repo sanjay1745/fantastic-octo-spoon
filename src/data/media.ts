@@ -66,6 +66,10 @@ export const media = {
   apparel: slot('media/apparel', 'Stoik apparel', 'Stoik apparel on display beneath the Stoik Gym mural', '16 / 10', '35% 70%'),
 
   coachingInPerson: slot('media/coaching-in-person', 'Coach cueing a client', 'A Stoik Gym coach working with a member on a machine', '4 / 5', '50% 40%'),
+  coachingPersonal: slot('media/coaching-pt', 'Coach cueing a client', 'A Stoik Gym coach cueing a member through a cable press', '4 / 5', '45% 35%'),
+  coachingLifestyle: slot('media/coaching-lifestyle', 'Lifestyle client training', 'A coach guiding a lifestyle client through lateral raises', '4 / 5', '55% 35%'),
+  fitClub: slot('media/fit-club', 'Fit Club group', 'Fit Club members and Team Stoik coaches together on the gym floor', '4 / 3', '50% 62%'),
+  bodybuildingClub: slot('media/bodybuilding-club', 'Bodybuilding Club session', 'Team Stoik coaches training physique athletes at Bodybuilding Club', '4 / 3', '50% 50%'),
   coachingOnline: slot('media/coaching-online', 'Member training', 'A member pressing dumbbells on an incline bench', '4 / 5', '50% 30%'),
 
   locationExterior: slot(null, 'Storefront at Roseville Square · dusk', 'The Stoik Gym storefront at Roseville Square', '16 / 10'),

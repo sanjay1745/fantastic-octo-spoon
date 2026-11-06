@@ -1,10 +1,9 @@
 import Button from '../components/Button'
+import CoachGrid from '../components/CoachGrid'
 import Media from '../components/Media'
 import SectionHeader from '../components/SectionHeader'
-import { coaches } from '../data/coaches'
 import { media } from '../data/media'
 import { consultHref } from '../lib/cta'
-import { asset } from '../lib/url'
 import styles from './Coaching.module.css'
 
 const programs = [
@@ -19,7 +18,7 @@ const programs = [
     id: 'online',
     eyebrow: 'Anywhere',
     title: 'Online coaching',
-    points: ['Programming built for your goals', 'Ongoing check-ins and adjustments', 'Coached by the same team, wherever you train'],
+    points: ['Lifestyle and contest prep coaching', 'Free Fit Club or Bodybuilding Club access', 'Coached by the same team, wherever you train'],
     image: media.coachingOnline,
   },
 ]
@@ -60,23 +59,7 @@ export default function Coaching() {
         </div>
 
         <div className={styles.team}>
-          <div className={styles.teamHead} data-reveal>
-            <h3 className={styles.teamTitle}>
-              <img src={asset('brand/team-stoik.webp')} alt="Team Stoik" width={720} height={170} loading="lazy" decoding="async" />
-            </h3>
-            <Button href="/coaching" variant="ghost" size="sm" arrow>
-              Meet the coaches
-            </Button>
-          </div>
-          <ul role="list" className={styles.coaches}>
-            {coaches.map((c, i) => (
-              <li key={c.slug} className={styles.coach} data-reveal style={{ ['--reveal-delay' as string]: `${(i % 6) * 60}ms` }}>
-                <Media slot={c.photo} className={styles.portrait} sizes="(min-width: 1100px) 16vw, (min-width: 640px) 30vw, 45vw" />
-                <p className={styles.coachName}>{c.name}</p>
-                <p className={styles.coachRole}>{c.role}</p>
-              </li>
-            ))}
-          </ul>
+          <CoachGrid />
         </div>
       </div>
     </section>

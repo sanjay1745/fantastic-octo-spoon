@@ -12,6 +12,8 @@ export interface Plan {
   /** Small print under the card */
   fine?: string
   featured?: boolean
+  /** Number of visits included (passes/punch cards) */
+  visits?: number
   /** 'join' → online signup (location joinUrl). 'in-person' → buy at the front desk. */
   purchase: 'join' | 'in-person'
 }
@@ -74,6 +76,7 @@ export const rosevillePasses: Plan[] = [
     price: 110,
     cadence: 'once',
     term: '10 visits · never expires',
+    visits: 10,
     summary: 'Coming in more than a few times? Save over buying day passes.',
     purchase: 'in-person',
   },

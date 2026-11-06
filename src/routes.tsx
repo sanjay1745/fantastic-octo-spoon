@@ -1,8 +1,10 @@
 import type { ReactNode } from 'react'
 import { locations, primaryLocation } from './data/locations'
 import { site } from './data/site'
+import Coaching from './pages/Coaching'
 import Home from './pages/Home'
 import LocationDetail from './pages/LocationDetail'
+import Memberships from './pages/Memberships'
 import Stub from './pages/Stub'
 import { healthClubJsonLd, organizationJsonLd, type PageMeta } from './seo/head'
 
@@ -34,7 +36,7 @@ export const routes: AppRoute[] = [
       title: 'Memberships',
       description: `Membership plans, day passes and punch cards at ${site.name} in ${city}. Join online or book a free tour.`,
     },
-    element: <Stub eyebrow="Memberships" title="Choose your plan." />,
+    element: <Memberships />,
   },
   {
     path: '/coaching',
@@ -42,9 +44,9 @@ export const routes: AppRoute[] = [
     meta: {
       path: '/coaching',
       title: 'Personal Training & Online Coaching',
-      description: `In-person personal training and online coaching from the ${site.name} coaching team. Book a free consultation.`,
+      description: `Personal training, lifestyle and contest prep online coaching, Fit Club and Bodybuilding Club with Team Stoik at ${site.name}. Book a free consultation.`,
     },
-    element: <Stub eyebrow="Coaching" title="Coached to a higher standard." />,
+    element: <Coaching />,
   },
   {
     path: '/the-gym',

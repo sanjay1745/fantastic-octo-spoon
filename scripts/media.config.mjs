@@ -19,6 +19,12 @@ export const images = {
   'coaching-in-person': { file: '20260325SSM-29.jpg' },
   'coaching-online': { file: '20250728SSM-38.jpg' },
 
+  // Coaching page
+  'coaching-pt': { file: '20261103SSM-09.jpg' },
+  'coaching-lifestyle': { file: '20260325SSM-25.jpg' },
+  'fit-club': { file: 'fit club group pic.jpg' },
+  'bodybuilding-club': { file: '20260528SSM-25.jpg' },
+
   // Coach portraits
   'coach-michael-lopez': { file: 'coach michael.jpg' },
   'coach-mel-renee': { file: 'coach mel pfp.jpg' },

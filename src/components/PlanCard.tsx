@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 import { formatPrice, type Plan } from '../data/memberships'
 import Button from './Button'
 import styles from './PlanCard.module.css'
@@ -7,9 +7,11 @@ interface Props {
   plan: Plan
   joinUrl: string
   style?: CSSProperties
+  /** Optional highlight line, e.g. savings */
+  extra?: ReactNode
 }
 
-export default function PlanCard({ plan, joinUrl, style }: Props) {
+export default function PlanCard({ plan, joinUrl, style, extra }: Props) {
   const { amount, per } = formatPrice(plan)
   return (
     <article className={`${styles.card} ${plan.featured ? styles.featured : ''}`} data-reveal style={style}>
@@ -22,6 +24,7 @@ export default function PlanCard({ plan, joinUrl, style }: Props) {
       <p className={styles.term}>{plan.term}</p>
       <p className={styles.summary}>{plan.summary}</p>
       {plan.fine && <p className={styles.fine}>{plan.fine}</p>}
+      {extra && <p className={styles.extra}>{extra}</p>}
       <div className={styles.cta}>
         {plan.purchase === 'join' ? (
           <Button href={joinUrl} variant={plan.featured ? 'primary' : 'light'}>
