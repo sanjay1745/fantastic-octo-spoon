@@ -56,3 +56,5 @@ export const media = {
 }
 
 export type MediaKey = keyof typeof media
+/** Keys of image (not video) slots */
+export type ImageKey = { [K in MediaKey]: (typeof media)[K] extends ImageSlot ? K : never }[MediaKey]

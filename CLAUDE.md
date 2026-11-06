@@ -43,6 +43,10 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
 - Performance: responsive, lazy-loaded images (AVIF/WebP), compressed hero video with a poster image, self-hosted fonts, no heavy libraries.
 - Accessibility: semantic HTML, real alt text, full keyboard navigation, visible focus states, WCAG AA contrast.
 
+## Fonts
+- Display: Archivo Variable at `font-stretch: 125%` (expanded). Body: Inter Variable. Both self-hosted via @fontsource.
+- **Ringold Sans is intentionally not used yet.** It is caps-only, so "Stoik Gym" would render as STOIK GYM (violates the naming rule), and it is licensed through Adobe Fonts (web use requires an Adobe Fonts web project, not self-hosting the .otf). Waiting on the owner's decision.
+
 ## Where things live
 - `src/data/`: **all business info** as typed data: locations (address, hours, phone, geo, join URL, status), memberships/pricing, coaches, FAQs, stats, testimonials, site-wide info (socials, email, shop URL). Components read from here; never hard-code prices, hours, addresses or names in components.
 - `public/media/`: real photos and video (supplied by the owner, a videographer). `src/data/media.ts` maps slots to files, so swapping a placeholder means changing data only.

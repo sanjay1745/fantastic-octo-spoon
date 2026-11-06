@@ -1,11 +1,11 @@
-import type { MediaKey } from './media'
+import type { ImageKey } from './media'
 import { site } from './site'
 
 export interface Amenity {
   id: string
   title: string
   blurb: string
-  media: MediaKey
+  media: ImageKey
   /** Optional link, internal path or external URL */
   href?: string
 }

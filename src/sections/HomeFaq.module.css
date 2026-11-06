@@ -1,0 +1,7 @@
+.faq { border-top: 1px solid var(--color-line); }
+.grid { display: grid; gap: var(--space-2); }
+
+@media (min-width: 1000px) {
+  .grid { grid-template-columns: 2fr 3fr; gap: var(--space-8); align-items: start; }
+  .head { position: sticky; top: calc(var(--nav-height) + var(--space-7)); }
+}

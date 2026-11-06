@@ -27,8 +27,9 @@
   --color-overlay: linear-gradient(180deg, rgb(10 10 10 / 0.35) 0%, rgb(10 10 10 / 0.15) 40%, rgb(10 10 10 / 0.9) 100%);
 
   /* ---------- Type ---------- */
-  /* Display: Ringold Sans once licensed web files are added; Archivo Expanded until then. */
-  --font-display: 'Ringold Sans', 'Archivo Variable', 'Arial Black', system-ui, sans-serif;
+  /* Display: Archivo (expanded via font-stretch). Ringold Sans is NOT in the stack on purpose:
+     it is caps-only, which would render "Stoik" as all caps (brand rule). See CLAUDE.md. */
+  --font-display: 'Archivo Variable', 'Arial Black', system-ui, sans-serif;
   --font-display-stretch: 125%;
   --font-body: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
 

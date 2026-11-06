@@ -1,0 +1,57 @@
+.head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0 var(--space-7);
+}
+.partner {
+  display: grid;
+  gap: var(--space-2);
+  margin-bottom: clamp(var(--space-7), 4vw, var(--space-8));
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-dim);
+}
+.partner img { width: 150px; height: auto; opacity: 0.85; }
+
+/* Mobile: horizontal snap carousel that bleeds to the screen edge */
+.grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(80vw, 22rem);
+  gap: var(--space-3);
+  margin-inline: calc(var(--gutter) * -1);
+  padding-inline: var(--gutter);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+}
+.grid::-webkit-scrollbar { display: none; }
+.item { scroll-snap-align: start; display: flex; }
+.card { flex: 1; min-height: 26rem; }
+
+.more { margin-top: var(--space-7); }
+
+/* Tablet+: bento grid */
+@media (min-width: 768px) {
+  .grid {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-columns: auto;
+    gap: var(--space-4);
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow: visible;
+  }
+  .card { min-height: 24rem; }
+  .item:nth-child(1) { grid-column: span 2; }
+  .item:nth-child(7) { grid-column: span 2; }
+  .item:nth-child(1) .card { min-height: 30rem; }
+}
+@media (min-width: 1100px) {
+  .card { min-height: 28rem; }
+}

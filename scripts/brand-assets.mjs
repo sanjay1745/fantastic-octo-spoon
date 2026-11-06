@@ -42,3 +42,9 @@ const og = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}">
 <path transform="translate(${((W - ew * es) / 2).toFixed(1)} ${((H - eh * es) / 2).toFixed(1)}) scale(${es.toFixed(5)})" fill="#fff" d="${pathOf(emblem)}"/></svg>`
 await sharp(Buffer.from(og)).jpeg({ quality: 88 }).toFile(p(new URL('og-default.jpg', brand)))
 console.log('brand assets written')
+
+// Partner / sub-brand marks (PNG sources only): trimmed and resized for the web.
+const logos = new URL('../logos/', import.meta.url)
+await sharp(p(new URL('TEAMSTOIK_LOGO_WHITE.png', logos))).trim().resize({ width: 720 }).webp({ quality: 90 }).toFile(p(new URL('team-stoik.webp', brand)))
+await sharp(p(new URL('Full Skelcore Logo (White).png', logos))).trim().resize({ width: 640 }).webp({ quality: 90 }).toFile(p(new URL('skelcore.webp', brand)))
+console.log('partner logos written')

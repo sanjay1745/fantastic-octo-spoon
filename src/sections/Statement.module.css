@@ -1,0 +1,2 @@
+.statement { padding-block: clamp(var(--space-9), 14vw, 14rem); }
+.text { margin-top: var(--space-6); max-width: 68rem; }

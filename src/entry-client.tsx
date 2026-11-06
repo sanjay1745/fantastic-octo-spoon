@@ -1,9 +1,10 @@
+// Global styles first so component CSS Modules can override them.
+import './styles/base.css'
 import { StrictMode } from 'react'
 import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router'
 import App from './App'
 import { basename } from './lib/url'
-import './styles/base.css'
 
 const app = (
   <StrictMode>

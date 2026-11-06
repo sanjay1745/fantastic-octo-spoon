@@ -1,0 +1,28 @@
+.text {
+  font-family: var(--font-display);
+  font-stretch: 110%;
+  font-weight: 700;
+  font-size: var(--text-statement);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+  text-wrap: pretty;
+}
+
+.text [data-word] {
+  transition: color 400ms var(--ease-out), opacity 400ms var(--ease-out);
+}
+.emph {
+  background: var(--color-silver-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Only dim words once the scroll effect is active (JS on, motion allowed). */
+.text[data-animate] [data-word]:not([data-lit]) {
+  color: #2e2e2e;
+}
+.text[data-animate] .emph:not([data-lit]) {
+  background: none;
+  color: #2e2e2e;
+}
