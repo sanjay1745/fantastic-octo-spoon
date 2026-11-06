@@ -35,7 +35,7 @@ export const faqs: Faq[] = [
   {
     id: 'contract',
     q: 'Do I have to sign a contract?',
-    a: `Only if you want our best rate. Standard membership is $${plan('standard').price}/mo on a 12-month agreement. Month-to-month is $${plan('month-to-month').price}/mo with no contract.`,
+    a: `Only if you want our best rate. Full Access is $${plan('standard').price}/mo on a 12-month agreement. Month-to-month is $${plan('month-to-month').price}/mo with no contract.`,
     tags: ['home', 'memberships'],
   },
   {
@@ -53,8 +53,14 @@ export const faqs: Faq[] = [
   {
     id: 'family',
     q: 'How does the family plan work?',
-    a: `$${plan('family').price}/mo covers up to three members. Each additional member is $30/mo.`,
+    a: `Family Full Access is $${plan('family').price}/mo for up to three members. Each additional member is $30/mo.`,
     tags: ['memberships'],
+  },
+  {
+    id: 'recovery-included',
+    q: 'Is the recovery room included in my membership?',
+    a: 'Yes. Every membership is full access, including the recovery room: infrared sauna, two cold plunges and leg compression sleeves.',
+    tags: ['home', 'memberships'],
   },
   {
     id: 'coaching',

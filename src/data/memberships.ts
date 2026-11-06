@@ -12,6 +12,10 @@ export interface Plan {
   /** Small print under the card */
   fine?: string
   featured?: boolean
+  /** Former monthly price, shown struck through next to `price` */
+  wasPrice?: number
+  /** Short highlight line under the summary, e.g. what's now included */
+  perk?: string
   /** Number of visits included (passes/punch cards) */
   visits?: number
   /**
@@ -24,15 +28,33 @@ export interface Plan {
   buyUrl?: string
 }
 
+/** Every membership is full access: the whole floor plus the recovery room. */
+const fullAccess = 'Now includes full access to our recovery room.'
+
+/** Display order is the order of this list. */
 export const rosevillePlans: Plan[] = [
   {
     id: 'standard',
-    name: 'Standard',
+    name: 'Full Access',
     price: 109,
+    wasPrice: 199,
     cadence: 'month',
     term: '12-month agreement',
     summary: 'Our best monthly rate, for members who are in it for the long run.',
+    perk: fullAccess,
     featured: true,
+    purchase: 'join',
+  },
+  {
+    id: 'family',
+    name: 'Family Full Access',
+    price: 179,
+    wasPrice: 379,
+    cadence: 'month',
+    term: 'Up to 3 members',
+    summary: 'Train together under one membership.',
+    perk: fullAccess,
+    fine: '$30/mo for each additional member.',
     purchase: 'join',
   },
   {
@@ -42,6 +64,7 @@ export const rosevillePlans: Plan[] = [
     cadence: 'month',
     term: 'No contract',
     summary: 'Full membership with no long-term commitment.',
+    perk: fullAccess,
     purchase: 'join',
   },
   {
@@ -51,17 +74,8 @@ export const rosevillePlans: Plan[] = [
     cadence: 'month',
     term: 'Month-to-month',
     summary: 'A discounted rate for students and first responders.',
+    perk: fullAccess,
     fine: 'Status verified at sign-up or on your first visit.',
-    purchase: 'join',
-  },
-  {
-    id: 'family',
-    name: 'Family',
-    price: 180,
-    cadence: 'month',
-    term: 'Up to 3 members',
-    summary: 'Train together under one membership.',
-    fine: '$30/mo for each additional member.',
     purchase: 'join',
   },
 ]

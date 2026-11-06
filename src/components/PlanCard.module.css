@@ -29,7 +29,18 @@
 }
 .name { font-size: var(--text-h4); font-weight: 600; }
 .featured .name { padding-right: 7.5rem; }
-.price { display: flex; align-items: baseline; gap: var(--space-1); margin-top: var(--space-3); }
+.price { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-1); margin-top: var(--space-3); }
+/* Old price sits on its own line above the new one */
+.hasWas { margin-top: var(--space-1); }
+.was {
+  flex-basis: 100%;
+  margin-bottom: var(--space-1);
+  font-size: var(--text-base, 1rem);
+  font-weight: 500;
+  color: var(--color-text-dim);
+  text-decoration-color: var(--color-red);
+  text-decoration-thickness: 2px;
+}
 .amount {
   font-family: var(--font-display);
   font-stretch: var(--font-display-stretch);
@@ -47,6 +58,13 @@
 }
 .summary { margin-top: var(--space-3); color: var(--color-text-muted); }
 .fine { font-size: var(--text-sm); color: var(--color-text-dim); }
+.perk {
+  padding-left: var(--space-3);
+  border-left: 2px solid var(--color-red);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+}
 .extra {
   align-self: flex-start;
   margin-top: var(--space-2);

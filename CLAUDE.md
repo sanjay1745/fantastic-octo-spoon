@@ -65,11 +65,13 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
 - Age: **always market Stoik Gym as an 18+ gym.** 16–17 year olds are allowed only after an interview with Jeremy and must maintain a 3.0 GPA. Mention this only where relevant (e.g. an FAQ answer), never as a headline.
 - Primary lead CTA is a **free tour** (not a free trial). The booking URL will be supplied later. Until then it lives as one placeholder value in `src/data/site.ts`.
 - Pricing:
-  - Standard: $109/mo on a 12-month contract, or $129/mo month-to-month with no contract.
+  - **Every membership is full access**, including the recovery room (infrared sauna, 2 cold plunges, leg compression sleeves). Full access used to be a separate $199/mo plan.
+  - Full Access (was "Standard"): $109/mo on a 12-month contract, shown as cut from $199. Badge: "Best value". Or $129/mo month-to-month with no contract.
+  - Family Full Access: $179/mo for up to 3 people, shown as cut from $379, plus $30/mo for each additional person.
   - Student / first responder: $79/mo, month-to-month. Status is verified at sign-up or on the first visit.
-  - Family: $180/mo for up to 3 people, plus $30/mo for each additional person.
+  - Card order: Full Access, Family Full Access, Month-to-Month, Student & First Responder.
   - Day pass: $25, sold in person at the club only (no online purchase).
-  - 10-visit punch card: $110 for 10 gym visits, never expires. Position it as the better-value alternative to day passes.
+  - 10-visit punch card: $110 for 10 gym visits, never expires. Sold online (Peak Payment link in data) or at the club. Position it as the better-value alternative to day passes.
 - Coaching (PT and online): **no prices on the site.** Pricing is given at a consultation, so coaching CTAs are "Book a consultation".
 - Coaching team (each gets a profile card/spotlight): Cinthia Beltran, Michael Lopez, Mel Renee, Stephanie Pleasas, Logan Frushour, Tyler Brey, Kevin Zaragoza. Bios and specialties are still to come; Logan has no photo yet.
 - More locations are coming.

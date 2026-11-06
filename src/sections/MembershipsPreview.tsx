@@ -17,7 +17,7 @@ export default function MembershipsPreview() {
           eyebrow="Memberships"
           id="memberships-title"
           title="Choose how you commit."
-          lead="One standard of gym, whichever plan you choose. Not sure yet? Book a free tour first."
+          lead="Every plan is full access. The whole floor and the recovery room, whichever plan you choose."
         />
 
         <div className={styles.plans}>

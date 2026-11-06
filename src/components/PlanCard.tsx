@@ -15,14 +15,22 @@ export default function PlanCard({ plan, joinUrl, style, extra }: Props) {
   const { amount, per } = formatPrice(plan)
   return (
     <article className={`${styles.card} ${plan.featured ? styles.featured : ''}`} data-reveal style={style}>
-      {plan.featured && <p className={styles.badge}>Recommended</p>}
+      {plan.featured && <p className={styles.badge}>Best value</p>}
       <h3 className={styles.name}>{plan.name}</h3>
-      <p className={styles.price}>
+      <p className={`${styles.price} ${plan.wasPrice !== undefined ? styles.hasWas : ''}`}>
+        {plan.wasPrice !== undefined && (
+          <s className={styles.was}>
+            <span className="visually-hidden">Was </span>${plan.wasPrice}
+            {per}
+            <span className="visually-hidden">, now</span>
+          </s>
+        )}
         <span className={styles.amount}>{amount}</span>
         {per && <span className={styles.per}>{per}</span>}
       </p>
       <p className={styles.term}>{plan.term}</p>
       <p className={styles.summary}>{plan.summary}</p>
+      {plan.perk && <p className={styles.perk}>{plan.perk}</p>}
       {plan.fine && <p className={styles.fine}>{plan.fine}</p>}
       {extra && <p className={styles.extra}>{extra}</p>}
       <div className={styles.cta}>
