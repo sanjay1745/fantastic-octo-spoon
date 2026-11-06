@@ -30,6 +30,13 @@ export default function PlanCard({ plan, joinUrl, style, extra }: Props) {
           <Button href={joinUrl} variant={plan.featured ? 'primary' : 'light'}>
             Join Now
           </Button>
+        ) : plan.purchase === 'online' && plan.buyUrl ? (
+          <>
+            <Button href={plan.buyUrl} variant="light">
+              Buy online
+            </Button>
+            <p className={styles.inPerson}>Or buy at the front desk</p>
+          </>
         ) : (
           <p className={styles.inPerson}>Available at the front desk</p>
         )}

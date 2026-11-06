@@ -1,10 +1,13 @@
 import Button from '../components/Button'
 import PlanCard from '../components/PlanCard'
 import SectionHeader from '../components/SectionHeader'
+import SmartLink from '../components/SmartLink'
 import { formatPrice } from '../data/memberships'
 import { primaryLocation as loc } from '../data/locations'
 import { tourHref } from '../lib/cta'
 import styles from './MembershipsPreview.module.css'
+
+const punchCard = loc.passes.find((p) => p.purchase === 'online')
 
 export default function MembershipsPreview() {
   return (
@@ -37,7 +40,20 @@ export default function MembershipsPreview() {
               )
             })}
           </ul>
-          <p className={styles.passNote}>Available in person at the front desk.</p>
+          <p className={styles.passNote}>
+            Day passes are sold at the front desk.{' '}
+            {punchCard?.buyUrl ? (
+              <>
+                Punch cards are sold at the club or{' '}
+                <SmartLink href={punchCard.buyUrl} className={styles.passLink}>
+                  online
+                </SmartLink>
+                .
+              </>
+            ) : (
+              'Punch cards are sold at the club.'
+            )}
+          </p>
         </div>
 
         <div className={styles.actions}>

@@ -14,8 +14,14 @@ export interface Plan {
   featured?: boolean
   /** Number of visits included (passes/punch cards) */
   visits?: number
-  /** 'join' → online signup (location joinUrl). 'in-person' → buy at the front desk. */
-  purchase: 'join' | 'in-person'
+  /**
+   * 'join' → online signup (location joinUrl).
+   * 'online' → buy online at `buyUrl`, or in person at the club.
+   * 'in-person' → buy at the front desk only.
+   */
+  purchase: 'join' | 'online' | 'in-person'
+  /** Online checkout link, used when purchase is 'online' */
+  buyUrl?: string
 }
 
 export const rosevillePlans: Plan[] = [
@@ -78,7 +84,8 @@ export const rosevillePasses: Plan[] = [
     term: '10 visits · never expires',
     visits: 10,
     summary: 'Coming in more than a few times? Save over buying day passes.',
-    purchase: 'in-person',
+    purchase: 'online',
+    buyUrl: 'https://secure.peakpayment.com/4340/join/?p=1285',
   },
 ]
 

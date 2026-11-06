@@ -59,4 +59,5 @@
 }
 .cta { margin-top: auto; padding-top: var(--space-5); }
 .cta > a { width: 100%; }
+.cta > a + .inPerson { margin-top: var(--space-3); text-align: center; }
 .inPerson { font-size: var(--text-sm); color: var(--color-text-muted); }

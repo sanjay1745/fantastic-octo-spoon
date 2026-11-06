@@ -41,7 +41,7 @@ export const faqs: Faq[] = [
   {
     id: 'day-pass',
     q: 'Do you offer day passes?',
-    a: `Yes. Day passes are $${plan('day-pass').price} and available in person at the front desk any time we're open. Coming in more often? The 10-visit punch card is $${plan('punch-card').price} and never expires.`,
+    a: `Yes. Day passes are $${plan('day-pass').price} and available in person at the front desk any time we're open. Coming in more often? The 10-visit punch card is $${plan('punch-card').price}, never expires, and can be bought online or at the front desk.`,
     tags: ['home', 'memberships'],
   },
   {

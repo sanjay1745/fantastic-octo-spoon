@@ -28,6 +28,13 @@
 }
 .passTerm { font-size: var(--text-sm); color: var(--color-text-muted); }
 .passNote { font-size: var(--text-sm); color: var(--color-text-dim); }
+.passLink {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--color-line-strong);
+}
+.passLink:hover { color: var(--color-text); text-decoration-color: var(--color-red); }
 
 .actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-7); }
 

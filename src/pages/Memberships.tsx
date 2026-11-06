@@ -58,7 +58,7 @@ export default function Memberships() {
             eyebrow="Drop in"
             id="passes-title"
             title="Day passes & punch cards."
-            lead="Visiting, or not ready for a membership? Both are sold in person at the front desk, any time we're open."
+            lead="Visiting, or not ready for a membership? Day passes are sold at the front desk. Punch cards are sold online or at the club."
           />
           <div className={styles.passes}>
             {loc.passes.map((p, i) => (
