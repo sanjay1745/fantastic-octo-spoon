@@ -15,10 +15,10 @@ export const site = {
   email: 'support@stoikgym.com',
   shopUrl: 'https://stoikathletix.com/',
   /**
-   * Free tour booking link. TODO(owner): supply the booking URL.
-   * While null, every "Book a free tour" CTA routes to the on-site /contact page.
+   * Free tour booking link (ClubLifePro booking widget). Every "Book a free tour" CTA uses it.
+   * Set to null to fall back to the on-site /contact page.
    */
-  tourUrl: null as string | null,
+  tourUrl: 'https://link.clublifepro.com/widget/booking/oY43OaIkWwVuXrB1QIhk' as string | null,
   founder: {
     name: 'Jeremy Buendia',
     title: "4x Men's Physique Olympia Champion",
