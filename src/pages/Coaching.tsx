@@ -69,6 +69,7 @@ export default function Coaching() {
     <>
       <PageHero
         top={<TeamStoikLogo />}
+        image={media.coachingHero}
         eyebrow="Coaching"
         title="Coached to a higher standard."
         lead="Train one-on-one, get coached online, or train with the group. Every path is led by Team Stoik."

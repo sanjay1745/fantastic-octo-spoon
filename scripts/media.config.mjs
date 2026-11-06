@@ -20,6 +20,8 @@ export const images = {
   'coaching-online': { file: '20250728SSM-38.jpg' },
 
   // Coaching page
+  // Header montage: three training photos composed into one 16:10 image (like the apparel banner)
+  'coaching-hero': { file: 'coaching hero montage.jpg' },
   'coaching-pt': { file: '20261103SSM-09.jpg' },
   'coaching-lifestyle': { file: '20260325SSM-25.jpg' },
   'fit-club': { file: 'fit club group pic.jpg' },

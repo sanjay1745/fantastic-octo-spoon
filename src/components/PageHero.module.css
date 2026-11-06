@@ -5,3 +5,21 @@
 }
 .inner { display: grid; gap: var(--space-5); justify-items: start; max-width: 60rem; }
 .top { margin-bottom: var(--space-4); }
+
+/* Background photo variant */
+.withImage { position: relative; overflow: hidden; isolation: isolate; }
+.bg { z-index: -2; }
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(90deg, rgb(10 10 10 / 0.88) 0%, rgb(10 10 10 / 0.6) 55%, rgb(10 10 10 / 0.35) 100%),
+    linear-gradient(180deg, rgb(10 10 10 / 0.55) 0%, rgb(10 10 10 / 0.1) 35%, rgb(10 10 10 / 0.9) 100%);
+}
+.withImage :global(.lead) { color: rgb(255 255 255 / 0.82); }
+
+/* Phones show only the middle of a wide montage: darken evenly so text stays readable */
+@media (max-width: 767px) {
+  .overlay { background: linear-gradient(180deg, rgb(10 10 10 / 0.7) 0%, rgb(10 10 10 / 0.6) 50%, rgb(10 10 10 / 0.92) 100%); }
+}
