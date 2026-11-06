@@ -1,5 +1,5 @@
 import Button from '../components/Button'
-import CoachGrid from '../components/CoachGrid'
+import CoachGrid, { TeamStoikLogo } from '../components/CoachGrid'
 import FaqList from '../components/FaqList'
 import Media from '../components/Media'
 import PageHero from '../components/PageHero'
@@ -68,6 +68,7 @@ export default function Coaching() {
   return (
     <>
       <PageHero
+        top={<TeamStoikLogo />}
         eyebrow="Coaching"
         title="Coached to a higher standard."
         lead="Train one-on-one, get coached online, or train with the group. Every path is led by Team Stoik."

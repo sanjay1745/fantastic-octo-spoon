@@ -1,5 +1,5 @@
 import Button from '../components/Button'
-import CoachGrid from '../components/CoachGrid'
+import CoachGrid, { TeamStoikLogo } from '../components/CoachGrid'
 import Media from '../components/Media'
 import SectionHeader from '../components/SectionHeader'
 import { media } from '../data/media'
@@ -27,6 +27,9 @@ export default function Coaching() {
   return (
     <section className={`section ${styles.coaching}`} aria-labelledby="coaching-title">
       <div className="container">
+        <div data-reveal>
+          <TeamStoikLogo className={styles.logo} />
+        </div>
         <SectionHeader
           eyebrow="Coaching"
           id="coaching-title"

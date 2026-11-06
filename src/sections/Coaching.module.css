@@ -1,4 +1,5 @@
 .coaching { border-top: 1px solid var(--color-line); }
+.logo { margin-bottom: var(--space-7); }
 
 .programs { display: grid; gap: var(--space-4); }
 .program {

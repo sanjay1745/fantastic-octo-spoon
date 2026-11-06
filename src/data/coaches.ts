@@ -45,4 +45,5 @@ export const coaches: Coach[] = [
   coach('stephanie-pleasas', 'Stephanie Pleasas', true, '50% 35%'),
   coach('logan-frushour', 'Logan Frushour'),
   coach('tyler-brey', 'Tyler Brey', true),
+  coach('kevin-zaragoza', 'Kevin Zaragoza', true),
 ]

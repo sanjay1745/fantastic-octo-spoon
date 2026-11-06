@@ -53,6 +53,7 @@ export const images = {
   'coach-michael-lopez': { file: 'coach michael.jpg' },
   'coach-mel-renee': { file: 'coach mel pfp.jpg' },
   'coach-tyler-brey': { file: 'coach tyler.jpg' },
+  'coach-kevin-zaragoza': { file: 'coach kev pfp.jpg' },
 
   // Full-bleed
   'final-cta': { file: 'WIDE GYM FLOOR.jpg' },
