@@ -15,9 +15,9 @@ export default function Home() {
       <Hero />
       <Statement />
       <Amenities />
+      <MembershipsPreview />
       <Coaching />
       <Stats />
-      <MembershipsPreview />
       <Results />
       <Visit />
       <HomeFaq />
