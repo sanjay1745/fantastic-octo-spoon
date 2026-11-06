@@ -1,0 +1,27 @@
+.header {
+  display: grid;
+  gap: var(--space-4);
+  justify-items: start;
+  margin-bottom: clamp(var(--space-7), 4vw, var(--space-8));
+}
+.center { justify-items: center; text-align: center; }
+.center :global(.lead) { margin-inline: auto; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-silver);
+}
+.eyebrow::before {
+  content: '';
+  width: 1.5rem;
+  height: 1px;
+  background: var(--color-red);
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-3); }

@@ -13,14 +13,12 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
   - Eyebrow labels ("THE GYM", "COACHING") are uppercase styling labels and must never contain the brand name.
 - **Ethos / tagline:** "Be Stoik."
 - **Positioning:** we sell culture, community and premium coaching/results. We never compete on size or price.
-- **The gym is the brand, not Jeremy.** Founder Jeremy Buendia (title on site: "4x Men's Physique Mr. Olympia Champion") promotes it, but most coaching is done by the coaching team. Don't build pages around him.
-- **Logos:** the source files are in `/logos`. Use the files themselves; never redraw, recreate or retype the logo. Web-sized copies go in `/public/brand/`.
-  - Nav: `STOIK TEXT LOGO WHITE.png` (horizontal wordmark)
-  - Footer / large brand moments: `STOIK Transparent White logo` (bolt + stacked wordmark)
-  - Favicon / app icon / compact mobile mark: `ICON LOGO.png` (bolt only, white, placed on a black square)
-  - `TEAMSTOIK_LOGO_WHITE.png`: coaching team / online coaching contexts
-  - `Full Skelcore Logo (White).png`: equipment section (our equipment is primarily Skelcore)
-  - Black variants exist but are rarely needed, since the site is dark.
+- **The gym is the brand, not Jeremy.** Founder Jeremy Buendia (title on site: "4x Men's Physique Olympia Champion") promotes it, but most coaching is done by the coaching team. Don't build pages around him.
+- **Logos:** never redraw, recreate or retype the logo. Use the official artwork only.
+  - Vector SVGs, extracted from the `.ai` files in `/logos`, live in `src/assets/brand/` (`wordmark.svg`, `icon.svg`, `emblem.svg`). They use `fill="currentColor"`. Render them with `<Logo variant=… />`.
+  - Nav: `wordmark` · Footer / large brand moments: `emblem` (bolt + stacked wordmark) · Favicon / app icon: `icon` on a black square.
+  - `npm run brand` regenerates `public/favicon.svg`, `public/apple-touch-icon.png`, `public/favicon-32.png`, `public/brand/icon-512.png` and `public/brand/og-default.jpg` from those SVGs.
+  - PNG-only for now: `TEAMSTOIK_LOGO_WHITE.png` (coaching contexts) and `Full Skelcore Logo (White).png` (equipment section).
 - **Copy tone:** direct, disciplined, premium. Short declarative lines. No hype words ("ultimate", "beast mode", "insane", "next level").
 
 ## Visual direction
@@ -37,7 +35,9 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
 ## Tech constraints
 - Vite + React + TypeScript, ESLint. Static only, **no backend**.
 - Hosting: GitHub Pages, deployed by a GitHub Actions workflow on push to `main`.
-- **Base path is one setting:** `site.config.ts` (`base`, `siteUrl`). Currently `/fantastic-octo-spoon/`. It switches to `/` when stoikgym.com is connected. Never hard-code the base path anywhere else; use `import.meta.env.BASE_URL` or the config.
+- **Base path is one setting:** `site.config.ts` (`origin`, `base`). Currently `/fantastic-octo-spoon/`. It switches to `/` (plus a `public/CNAME`) when stoikgym.com is connected. Never hard-code the base path; use `asset()`, `absoluteUrl()` and `basename` from `src/lib/url.ts`.
+- **Routing + pre-rendering:** React Router (`BrowserRouter`) with real URLs. `npm run build` also runs an SSR build plus `scripts/prerender.mjs`, which writes static HTML for every route in `src/routes.tsx` (with per-page head tags), and also `404.html`, `sitemap.xml` and `robots.txt`. Components must not touch `window`/`document` during render, only in effects.
+- Page titles and descriptions live in `src/routes.tsx` (`meta`). JSON-LD builders are in `src/seo/head.ts`.
 - "Join Now" → ClubLifePro signup. The URL lives in data (per location), never inline in components.
 - SEO: per-page title/description, Open Graph images, LocalBusiness/HealthClub JSON-LD generated from location data, `sitemap.xml`, `robots.txt`.
 - Performance: responsive, lazy-loaded images (AVIF/WebP), compressed hero video with a poster image, self-hosted fonts, no heavy libraries.
@@ -46,7 +46,8 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
 ## Where things live
 - `src/data/`: **all business info** as typed data: locations (address, hours, phone, geo, join URL, status), memberships/pricing, coaches, FAQs, stats, testimonials, site-wide info (socials, email, shop URL). Components read from here; never hard-code prices, hours, addresses or names in components.
 - `public/media/`: real photos and video (supplied by the owner, a videographer). `src/data/media.ts` maps slots to files, so swapping a placeholder means changing data only.
-- `public/brand/`: web-sized logo/favicon/OG assets derived from `/logos`.
+- `public/brand/`: generated icon/OG images (see Logos above).
+- Styles: `src/styles/tokens.css` (all design tokens) and `base.css`. Components use CSS Modules next to the component. Add `data-reveal` to any element to fade/blur it in on scroll.
 - `/logos`: source logo files (committed). Some vector files contain the white and black versions in one file, so split or crop them before use.
 - `/inspo`: inspiration screenshots, git-ignored (local only). Never imported by the app.
 

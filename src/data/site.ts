@@ -11,7 +11,7 @@ export const site = {
   shortName: 'Stoik',
   tagline: 'Be Stoik.',
   description:
-    'Stoik Gym is a premium boutique gym in Roseville, CA. Elite coaching, a disciplined culture and a community that shows up. Book a free tour.',
+    'Stoik Gym is a premium boutique gym in Roseville, CA. Premium coaching, a disciplined culture and a community that shows up. Book a free tour.',
   email: 'support@stoikgym.com',
   shopUrl: 'https://stoikathletix.com/',
   /**

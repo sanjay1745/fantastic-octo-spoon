@@ -1,0 +1,137 @@
+.nav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: var(--z-nav);
+  padding: max(env(safe-area-inset-top), 0.75rem) var(--gutter) 0;
+  pointer-events: none;
+}
+
+/* Floating pill */
+.bar {
+  pointer-events: auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  max-width: var(--container);
+  height: var(--nav-height);
+  margin-inline: auto;
+  padding: 0 0.5rem 0 1.25rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: rgb(14 14 14 / 0.55);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  backdrop-filter: blur(16px) saturate(140%);
+  transition: background-color var(--dur-base) ease, border-color var(--dur-base) ease;
+}
+.nav[data-scrolled] .bar {
+  background: rgb(14 14 14 / 0.88);
+  border-color: var(--color-line-strong);
+}
+
+.brand { flex-shrink: 0; color: var(--color-text); padding-block: var(--space-2); }
+.wordmark { width: clamp(108px, 28vw, 148px); }
+
+.links { display: none; margin-inline: auto; }
+.links ul { display: flex; gap: var(--space-1); }
+.link {
+  display: block;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: color var(--dur-fast) ease, background-color var(--dur-fast) ease;
+}
+.link:hover { color: var(--color-text); background: rgb(255 255 255 / 0.06); }
+.link[aria-current='page'] { color: var(--color-text); }
+
+.actions { display: flex; align-items: center; gap: var(--space-2); margin-left: auto; }
+.tour { display: none; }
+
+/* Menu toggle (mobile/tablet) */
+.toggle {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  color: var(--color-text);
+}
+.toggle:hover { background: rgb(255 255 255 / 0.06); }
+.burger, .burger::before, .burger::after {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform var(--dur-base) var(--ease-out), opacity var(--dur-fast) ease;
+}
+.burger { position: relative; }
+.burger::before, .burger::after { content: ''; position: absolute; left: 0; }
+.burger::before { transform: translateY(-6px); }
+.burger::after { transform: translateY(6px); }
+.burger[data-open] { background: transparent; }
+.burger[data-open]::before { transform: rotate(45deg); }
+.burger[data-open]::after { transform: rotate(-45deg); }
+
+/* Full-screen mobile menu */
+.menu {
+  pointer-events: auto;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--space-7);
+  padding: calc(var(--nav-height) + 2.5rem) var(--gutter) max(env(safe-area-inset-bottom), var(--space-6));
+  background: var(--color-bg);
+  overflow-y: auto;
+}
+.menu[hidden] { display: none; }
+
+.menuLinks { display: grid; gap: var(--space-1); }
+.menuLink {
+  display: block;
+  padding-block: var(--space-2);
+  font-family: var(--font-display);
+  font-stretch: var(--font-display-stretch);
+  font-weight: 800;
+  font-size: clamp(1.75rem, 8vw, 2.75rem);
+  line-height: 1.1;
+  color: var(--color-text-muted);
+}
+.menuLink[aria-current='page'], .menuLink:hover { color: var(--color-text); }
+
+.menuFooter { display: grid; gap: var(--space-6); }
+.menuInfo { display: grid; gap: var(--space-3); font-size: var(--text-sm); color: var(--color-text-muted); }
+.menuHours { display: block; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .menu[data-open] .menuLinks li {
+    animation: menuIn 500ms var(--ease-out) both;
+  }
+  .menu[data-open] .menuLinks li:nth-child(2) { animation-delay: 30ms; }
+  .menu[data-open] .menuLinks li:nth-child(3) { animation-delay: 60ms; }
+  .menu[data-open] .menuLinks li:nth-child(4) { animation-delay: 90ms; }
+  .menu[data-open] .menuLinks li:nth-child(5) { animation-delay: 120ms; }
+  .menu[data-open] .menuLinks li:nth-child(6) { animation-delay: 150ms; }
+  .menu[data-open] .menuLinks li:nth-child(7) { animation-delay: 180ms; }
+  .menu[data-open] .menuLinks li:nth-child(8) { animation-delay: 210ms; }
+}
+@keyframes menuIn {
+  from { opacity: 0; transform: translateY(12px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bar, .burger, .burger::before, .burger::after { transition: none; }
+}
+
+@media (min-width: 640px) {
+  .tour { display: inline-flex; }
+}
+@media (min-width: 1100px) {
+  .links { display: block; }
+  .toggle, .menu { display: none; }
+}

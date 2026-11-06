@@ -1,0 +1,6 @@
+.hero {
+  padding-top: calc(var(--nav-height) + clamp(5rem, 12vw, 9rem));
+  padding-bottom: clamp(var(--space-8), 8vw, var(--space-9));
+  border-bottom: 1px solid var(--color-line);
+}
+.inner { display: grid; gap: var(--space-5); justify-items: start; max-width: 60rem; }

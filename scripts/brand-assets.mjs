@@ -1,12 +1,13 @@
-// Generates favicon / app icon / default Open Graph image from the vector logos in public/brand.
+// Generates favicon / app icon / default Open Graph image from the vector logos in src/assets/brand.
 // Run: node scripts/brand-assets.mjs   (re-run only if the logo SVGs change)
 import fs from 'node:fs'
 import sharp from 'sharp'
 import { fileURLToPath } from 'node:url'
 const p = (u) => fileURLToPath(u)
 
+const src = new URL('../src/assets/brand/', import.meta.url)
 const brand = new URL('../public/brand/', import.meta.url)
-const read = (f) => fs.readFileSync(new URL(f, brand), 'utf8')
+const read = (f) => fs.readFileSync(new URL(f, src), 'utf8')
 const pathOf = (svg) => svg.match(/<path d="([^"]+)"/)[1]
 const boxOf = (svg) => svg.match(/viewBox="0 0 (\d+) (\d+)"/).slice(1).map(Number)
 
