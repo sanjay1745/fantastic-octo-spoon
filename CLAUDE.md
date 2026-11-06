@@ -13,7 +13,7 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
   - Eyebrow labels ("THE GYM", "COACHING") are uppercase styling labels and must never contain the brand name.
 - **Ethos / tagline:** "Be Stoik."
 - **Positioning:** we sell culture, community and premium coaching/results. We never compete on size or price.
-- **The gym is the brand, not Jeremy.** Founder Jeremy Buendia (4x Olympia Men's Physique champion) promotes it, but most coaching is done by the coaching team. Don't build pages around him.
+- **The gym is the brand, not Jeremy.** Founder Jeremy Buendia (title on site: "4x Men's Physique Mr. Olympia Champion") promotes it, but most coaching is done by the coaching team. Don't build pages around him.
 - **Logos:** the source files are in `/logos`. Use the files themselves; never redraw, recreate or retype the logo. Web-sized copies go in `/public/brand/`.
   - Nav: `STOIK TEXT LOGO WHITE.png` (horizontal wordmark)
   - Footer / large brand moments: `STOIK Transparent White logo` (bolt + stacked wordmark)
@@ -47,7 +47,8 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
 - `src/data/`: **all business info** as typed data: locations (address, hours, phone, geo, join URL, status), memberships/pricing, coaches, FAQs, stats, testimonials, site-wide info (socials, email, shop URL). Components read from here; never hard-code prices, hours, addresses or names in components.
 - `public/media/`: real photos and video (supplied by the owner, a videographer). `src/data/media.ts` maps slots to files, so swapping a placeholder means changing data only.
 - `public/brand/`: web-sized logo/favicon/OG assets derived from `/logos`.
-- `/logos`, `/inspo`: source material only. Not imported by the app.
+- `/logos`: source logo files (committed). Some vector files contain the white and black versions in one file, so split or crop them before use.
+- `/inspo`: inspiration screenshots, git-ignored (local only). Never imported by the app.
 
 ## Business facts (source of truth is `src/data/`)
 - Address: 1105 Roseville Square, Roseville, CA 95678 (same plaza as Trader Joe's). About 6,000 sq ft.
@@ -62,6 +63,8 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
   - Family: $180/mo for up to 3 people, plus $30/mo for each additional person.
   - Day pass: $25, sold in person at the club only (no online purchase).
   - 10-visit punch card: $110 for 10 gym visits, never expires. Position it as the better-value alternative to day passes.
+- Coaching (PT and online): **no prices on the site.** Pricing is given at a consultation, so coaching CTAs are "Book a consultation".
+- Coaching team (each gets a profile card/spotlight): Cinthia Beltran, Michael Lopez, Mel Renee, Stephanie Pleasas, Logan Frushour, Tyler Brey. Bios, photos and specialties are still to come.
 - More locations are coming.
 
 ## Working conventions
