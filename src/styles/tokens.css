@@ -1,0 +1,87 @@
+/*
+ * Stoik Gym design tokens. All colors, type, spacing and motion live here.
+ * Rule of thumb: black & white first, silver for secondary detail, red rarely.
+ */
+:root {
+  color-scheme: dark;
+
+  /* ---------- Color ---------- */
+  --color-bg: #0a0a0a;          /* page background (near-black) */
+  --color-surface: #141414;     /* cards, nav */
+  --color-surface-2: #1c1c1c;   /* raised / hover surfaces */
+  --color-line: rgb(255 255 255 / 0.12);
+  --color-line-strong: rgb(255 255 255 / 0.24);
+
+  --color-text: #ffffff;
+  --color-text-muted: #a3a3a3;  /* 7.8:1 on bg */
+  --color-text-dim: #6e6e6e;    /* decorative only, not for body copy */
+
+  --color-silver: #c9ccd1;
+  --color-silver-gradient: linear-gradient(135deg, #f2f3f5 0%, #b9bcc2 45%, #8d9096 55%, #d9dbdf 100%);
+
+  /* Red: CTAs (Join Now), focus rings, hover accents. Never a section background.
+     White text on red = 4.7:1. Red text on bg is only for large text or non-text marks. */
+  --color-red: #e1251b;
+  --color-red-hover: #f0362c;
+
+  --color-overlay: linear-gradient(180deg, rgb(10 10 10 / 0.35) 0%, rgb(10 10 10 / 0.15) 40%, rgb(10 10 10 / 0.9) 100%);
+
+  /* ---------- Type ---------- */
+  /* Display: Ringold Sans once licensed web files are added; Archivo Expanded until then. */
+  --font-display: 'Ringold Sans', 'Archivo Variable', 'Arial Black', system-ui, sans-serif;
+  --font-display-stretch: 125%;
+  --font-body: 'Inter Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Fluid scale: mobile → desktop */
+  --text-display: clamp(3rem, 1.6rem + 7vw, 8rem);
+  --text-h1: clamp(2.5rem, 1.6rem + 4.5vw, 5.5rem);
+  --text-h2: clamp(2.25rem, 1.5rem + 3.5vw, 4.5rem);
+  --text-h3: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
+  --text-h4: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+  --text-statement: clamp(1.75rem, 1.1rem + 3vw, 4rem);
+  --text-lg: clamp(1.0625rem, 1rem + 0.35vw, 1.25rem);
+  --text-body: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  --text-sm: 0.875rem;
+  --text-eyebrow: 0.75rem;
+
+  --leading-tight: 0.95;
+  --leading-snug: 1.15;
+  --leading-body: 1.6;
+  --tracking-display: -0.01em;
+  --tracking-eyebrow: 0.2em;
+
+  /* ---------- Space (4px base) ---------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+  --space-10: 8rem;
+
+  --section-pad: clamp(6rem, 4rem + 6vw, 10rem);
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --container: 80rem;
+  --container-narrow: 56rem;
+
+  /* ---------- Shape ---------- */
+  --radius-sm: 0.75rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-pill: 999px;
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --dur-fast: 180ms;
+  --dur-base: 300ms;
+  --dur-reveal: 900ms;
+
+  /* ---------- Layers ---------- */
+  --z-nav: 100;
+  --z-menu: 90;
+
+  --nav-height: 4rem;
+}
