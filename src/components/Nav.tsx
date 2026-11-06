@@ -52,9 +52,15 @@ export default function Nav() {
           <ul role="list">
             {navRoutes.map((r) => (
               <li key={r.to}>
-                <NavLink to={r.to} className={styles.link}>
-                  {r.label}
-                </NavLink>
+                {r.external ? (
+                  <a href={r.to} className={styles.link}>
+                    {r.label}
+                  </a>
+                ) : (
+                  <NavLink to={r.to} className={styles.link}>
+                    {r.label}
+                  </NavLink>
+                )}
               </li>
             ))}
           </ul>
@@ -90,9 +96,15 @@ export default function Nav() {
             </li>
             {navRoutes.map((r) => (
               <li key={r.to}>
-                <NavLink to={r.to} className={styles.menuLink}>
-                  {r.label}
-                </NavLink>
+                {r.external ? (
+                  <a href={r.to} className={styles.menuLink}>
+                    {r.label}
+                  </a>
+                ) : (
+                  <NavLink to={r.to} className={styles.menuLink}>
+                    {r.label}
+                  </NavLink>
+                )}
               </li>
             ))}
             <li>

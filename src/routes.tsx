@@ -5,7 +5,9 @@ import Coaching from './pages/Coaching'
 import Home from './pages/Home'
 import LocationDetail from './pages/LocationDetail'
 import Memberships from './pages/Memberships'
+import ExternalRedirect from './pages/ExternalRedirect'
 import Stub from './pages/Stub'
+import TheGym from './pages/TheGym'
 import { healthClubJsonLd, organizationJsonLd, type PageMeta } from './seo/head'
 
 export interface AppRoute {
@@ -54,19 +56,21 @@ export const routes: AppRoute[] = [
     meta: {
       path: '/the-gym',
       title: 'The Gym',
-      description: `Skelcore equipment, a recovery room with sauna and two cold plunges, and a dedicated posing room. Inside ${site.name} ${primaryLocation.name}.`,
+      description: `60+ pieces of Skelcore equipment, a recovery room with infrared sauna and two cold plunges, a private posing room and a pro shop. Inside ${site.name} ${primaryLocation.name}.`,
     },
-    element: <Stub eyebrow="The Gym" title="Built for serious training." />,
+    element: <TheGym />,
   },
   {
+    // Not a page: /shop forwards to the Shopify store (kept so old links and bios still work)
     path: '/shop',
-    label: 'Shop',
     meta: {
       path: '/shop',
       title: 'Shop',
-      description: `Stoik apparel, supplements, drinks and meal prep from ${site.name}.`,
+      description: `Stoik apparel on ${site.shopUrl.replace(/^https?:\/\/|\/$/g, '')}.`,
+      noindex: true,
+      redirect: site.shopUrl,
     },
-    element: <Stub eyebrow="Shop" title="Fuel and gear." />,
+    element: <ExternalRedirect to={site.shopUrl} label="the Stoik shop" />,
   },
   {
     path: '/about',
@@ -117,10 +121,20 @@ export const notFoundMeta: PageMeta = {
   noindex: true,
 }
 
+export interface NavItem {
+  to: string
+  label: string
+  /** Off-site link (opens the URL directly instead of routing) */
+  external?: boolean
+}
+
 /** Primary navigation, in order */
-export const navRoutes = ['/memberships', '/coaching', '/the-gym', '/about', '/locations', '/shop']
-  .map((p) => routes.find((r) => r.path === p)!)
-  .map((r) => ({ to: r.path, label: r.label! }))
+export const navRoutes: NavItem[] = [
+  ...['/memberships', '/coaching', '/the-gym', '/about', '/locations']
+    .map((p) => routes.find((r) => r.path === p)!)
+    .map((r) => ({ to: r.path, label: r.label! })),
+  { to: site.shopUrl, label: 'Shop', external: true },
+]
 
 export function findRoute(pathname: string): AppRoute | undefined {
   const clean = pathname.replace(/\/+$/, '') || '/'

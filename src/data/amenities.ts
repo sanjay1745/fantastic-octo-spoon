@@ -14,13 +14,13 @@ export const amenities: Amenity[] = [
   {
     id: 'equipment',
     title: 'Skelcore equipment',
-    blurb: 'A floor built primarily on Skelcore. Precise, smooth and made for serious training.',
+    blurb: '60+ pieces of premium Skelcore equipment, with new additions all the time.',
     media: 'equipment',
   },
   {
     id: 'recovery',
     title: 'Recovery room',
-    blurb: 'Sauna and leg compression sleeves on site.',
+    blurb: 'Infrared sauna and leg compression sleeves on site.',
     media: 'recovery',
   },
   {
@@ -31,20 +31,20 @@ export const amenities: Amenity[] = [
   },
   {
     id: 'posing',
-    title: 'Posing room',
+    title: 'Private posing room',
     blurb: 'A dedicated room to practice for the stage.',
-    media: 'posing',
+    media: 'posingRoom',
   },
   {
     id: 'fuel',
-    title: 'Supplements & drinks',
-    blurb: 'Pre-workout to post-workout, stocked in the gym.',
+    title: 'Pro shop',
+    blurb: 'The largest Evogen selection in the area, plus RAW, Ryse and Ghost.',
     media: 'fuel',
   },
   {
     id: 'meal-prep',
     title: 'Meal prep',
-    blurb: 'Prepared meals ready to grab on your way out.',
+    blurb: 'Made locally by Full & Fit, ready to grab on your way out.',
     media: 'mealPrep',
   },
   {

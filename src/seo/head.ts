@@ -11,6 +11,8 @@ export interface PageMeta {
   /** Path in /public for the Open Graph image */
   image?: string
   noindex?: boolean
+  /** Send visitors straight to this URL (meta refresh in the pre-rendered HTML) */
+  redirect?: string
   /** Extra JSON-LD objects for this page */
   jsonLd?: object[]
 }
@@ -37,6 +39,7 @@ export function renderHead(meta: PageMeta): string {
     `<meta name="description" content="${esc(meta.description)}" />`,
     `<link rel="canonical" href="${esc(url)}" />`,
     meta.noindex ? `<meta name="robots" content="noindex" />` : '',
+    meta.redirect ? `<meta http-equiv="refresh" content="0; url=${esc(meta.redirect)}" />` : '',
     `<meta property="og:type" content="website" />`,
     `<meta property="og:site_name" content="${esc(site.name)}" />`,
     `<meta property="og:title" content="${esc(title)}" />`,

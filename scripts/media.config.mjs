@@ -25,7 +25,27 @@ export const images = {
   'fit-club': { file: 'fit club group pic.jpg' },
   'bodybuilding-club': { file: '20260528SSM-25.jpg' },
 
+  // The Gym: highlights
+  'equipment-lateral-raise': { file: 'skelcore lateral raise.jpg' },
+  'posing-room': { file: 'posing room.jpg' },
+  'pro-shop': { file: 'evogen protein.jpg' },
+
+  // The Gym: facility carousel
+  'gallery-floor': { file: '20260801SSM-01.jpg' },
+  'gallery-chest-press': { file: 'chest presses.jpg' },
+  'gallery-cable': { file: 'cable machine.jpg' },
+  'gallery-coaching-1': { file: '20260220SSM-29.jpg' },
+  'gallery-straightbars': { file: 'chrome straightbars.jpg' },
+  'gallery-leg-extension': { file: 'leg extension.jpg' },
+  'gallery-low-row': { file: 'low row.jpg' },
+  'gallery-coaching-2': { file: '20260220SSM-49.jpg' },
+  'gallery-legs': { file: 'leg equipment.jpg' },
+  'gallery-mural': { file: 'mural and cardio.jpg' },
+  'gallery-floor-2': { file: '20261103SSM-01.jpg' },
+
   // Coach portraits
+  'coach-cinthia-beltran': { file: 'cinthia.jpg' },
+  'coach-stephanie-pleasas': { file: 'coach steph.jpg' },
   'coach-michael-lopez': { file: 'coach michael.jpg' },
   'coach-mel-renee': { file: 'coach mel pfp.jpg' },
   'coach-tyler-brey': { file: 'coach tyler.jpg' },

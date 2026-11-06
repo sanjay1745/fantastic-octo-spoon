@@ -31,7 +31,7 @@ export default function Footer() {
             <ul role="list">
               {navRoutes.map((r) => (
                 <li key={r.to}>
-                  <Link to={r.to}>{r.label}</Link>
+                  {r.external ? <a href={r.to}>{r.label}</a> : <Link to={r.to}>{r.label}</Link>}
                 </li>
               ))}
               <li>

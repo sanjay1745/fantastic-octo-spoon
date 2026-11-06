@@ -72,6 +72,11 @@ export const media = {
   bodybuildingClub: slot('media/bodybuilding-club', 'Bodybuilding Club session', 'Team Stoik coaches training physique athletes at Bodybuilding Club', '4 / 3', '50% 50%'),
   coachingOnline: slot('media/coaching-online', 'Member training', 'A member pressing dumbbells on an incline bench', '4 / 5', '50% 30%'),
 
+  // The Gym page highlights
+  equipmentFeature: slot('media/equipment-lateral-raise', 'Skelcore machine in use', 'Members training on a Skelcore lateral raise machine', '4 / 5', '50% 45%'),
+  posingRoom: slot('media/posing-room', 'Posing room', 'A physique athlete practicing in the private posing room at Stoik Gym', '4 / 5', '50% 40%'),
+  proShop: slot('media/pro-shop', 'Pro shop', 'A tub of Evogen protein from the Stoik Gym pro shop', '4 / 5', '50% 45%'),
+
   locationExterior: slot(null, 'Storefront at Roseville Square · dusk', 'The Stoik Gym storefront at Roseville Square', '16 / 10'),
   finalCta: slot('media/final-cta', 'Wide floor shot', 'The Stoik Gym training floor', '16 / 9'),
 }

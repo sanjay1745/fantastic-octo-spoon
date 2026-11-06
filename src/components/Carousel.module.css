@@ -1,0 +1,78 @@
+.carousel { position: relative; }
+
+/* Track starts aligned with the page container and bleeds off the right edge */
+.track {
+  --inset: max(var(--gutter), calc((100vw - var(--container)) / 2));
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min(80vw, 22rem);
+  column-gap: var(--space-3);
+  padding-inline: var(--inset);
+  scroll-padding-inline: var(--inset);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.track::-webkit-scrollbar { display: none; }
+.track:focus-visible { outline-offset: -2px; }
+
+.slide {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  scroll-snap-align: start;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-line);
+  background: var(--color-surface);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  margin-top: var(--space-5);
+}
+.count {
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-dim);
+}
+.count span { color: var(--color-text); }
+.progress {
+  flex: 1;
+  height: 1px;
+  background: var(--color-line);
+  overflow: hidden;
+}
+.progress span {
+  display: block;
+  height: 100%;
+  background: var(--color-silver);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.buttons { display: flex; gap: var(--space-2); }
+.buttons button {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  border: 1px solid var(--color-line-strong);
+  color: var(--color-text);
+  transition: background-color var(--dur-fast) ease, color var(--dur-fast) ease, opacity var(--dur-fast) ease;
+}
+.buttons button:hover:not(:disabled) { background: var(--color-text); color: var(--color-bg); }
+.buttons button:disabled { opacity: 0.3; cursor: default; }
+.buttons svg { width: 1rem; height: 1rem; }
+
+@media (min-width: 640px) {
+  .track { grid-auto-columns: calc((min(100vw, var(--container)) - var(--gutter) * 2) / 2.3); column-gap: var(--space-4); }
+}
+@media (min-width: 1100px) {
+  .track { grid-auto-columns: calc((min(100vw, var(--container)) - var(--gutter) * 2) / 3.3); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .progress span, .buttons button { transition: none; }
+}

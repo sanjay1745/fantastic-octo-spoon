@@ -38,6 +38,8 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
 - **Base path is one setting:** `site.config.ts` (`origin`, `base`). Currently `/fantastic-octo-spoon/`. It switches to `/` (plus a `public/CNAME`) when stoikgym.com is connected. Never hard-code the base path; use `asset()`, `absoluteUrl()` and `basename` from `src/lib/url.ts`.
 - **Routing + pre-rendering:** React Router (`BrowserRouter`) with real URLs. `npm run build` also runs an SSR build plus `scripts/prerender.mjs`, which writes static HTML for every route in `src/routes.tsx` (with per-page head tags), and also `404.html`, `sitemap.xml` and `robots.txt`. Components must not touch `window`/`document` during render, only in effects.
 - Page titles and descriptions live in `src/routes.tsx` (`meta`). JSON-LD builders are in `src/seo/head.ts`.
+- **Shop is not a page.** "Shop" in the nav/footer links straight to the Shopify store (`site.shopUrl`). `/shop` exists only as a redirect (meta refresh, noindex, not in the sitemap).
+- Location-specific facility content (carousel photos, highlight sections) lives in `src/data/facilities.ts`, keyed by location slug.
 - "Join Now" → ClubLifePro signup. The URL lives in data (per location), never inline in components.
 - SEO: per-page title/description, Open Graph images, LocalBusiness/HealthClub JSON-LD generated from location data, `sitemap.xml`, `robots.txt`.
 - Performance: responsive, lazy-loaded images (AVIF/WebP), compressed hero video with a poster image, self-hosted fonts, no heavy libraries.
