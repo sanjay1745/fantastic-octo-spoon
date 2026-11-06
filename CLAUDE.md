@@ -49,7 +49,7 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
 
 ## Where things live
 - `src/data/`: **all business info** as typed data: locations (address, hours, phone, geo, join URL, status), memberships/pricing, coaches, FAQs, stats, testimonials, site-wide info (socials, email, shop URL). Components read from here; never hard-code prices, hours, addresses or names in components.
-- `public/media/`: real photos and video (supplied by the owner, a videographer). `src/data/media.ts` maps slots to files, so swapping a placeholder means changing data only.
+- **Media pipeline:** full-res originals go in `/media` (git-ignored, often 20 MB+ each). `scripts/media.config.mjs` maps originals (or a still at time `t` from a video) to slot names. `npm run media` writes `public/media/<slot>-{480,800,1200,1800}.{avif,webp}` plus the hero loops (`hero-1080.mp4`, `hero-720x1280.mp4`, muted). Video needs ffmpeg on PATH or `FFMPEG=/path/to/ffmpeg`. Then set `src: 'media/<slot>'` in `src/data/media.ts` / `coaches.ts`; `focus` sets the crop. Never commit originals.
 - `public/brand/`: generated icon/OG images (see Logos above).
 - Styles: `src/styles/tokens.css` (all design tokens) and `base.css`. Components use CSS Modules next to the component. Add `data-reveal` to any element to fade/blur it in on scroll.
 - `/logos`: source logo files (committed). Some vector files contain the white and black versions in one file, so split or crop them before use.

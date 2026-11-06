@@ -1,6 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Button from '../components/Button'
 import Logo from '../components/Logo'
+import Media from '../components/Media'
 import { Eyebrow } from '../components/SectionHeader'
 import { formatHours, primaryLocation } from '../data/locations'
 import { media } from '../data/media'
@@ -13,8 +14,10 @@ export default function Hero() {
   const video = media.heroVideo
   const ref = useRef<HTMLVideoElement>(null)
   const reduced = useReducedMotion()
+  const [playing, setPlaying] = useState(false)
 
-  // Reduced motion: keep the poster frame, don't autoplay.
+  // The poster image is the first paint (and LCP). The video starts after hydration
+  // and fades in once frames are actually playing. Reduced motion: poster only.
   useEffect(() => {
     const v = ref.current
     if (!v) return
@@ -27,16 +30,26 @@ export default function Hero() {
   return (
     <section className={styles.hero} aria-labelledby="hero-title">
       <div className={styles.bg}>
+        {video.poster && (
+          <Media
+            slot={{ kind: 'image', src: video.poster, alt: '', label: '', aspect: '16 / 9' }}
+            fill
+            priority
+            sizes="100vw"
+          />
+        )}
         {video.src ? (
           <video
             ref={ref}
             className={styles.video}
+            data-playing={playing ? '' : undefined}
             muted
             loop
             playsInline
-            preload="metadata"
-            poster={video.poster ? asset(video.poster) : undefined}
+            preload="none"
             aria-label={video.alt}
+            onPlaying={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
           >
             {video.srcMobile && <source src={asset(video.srcMobile)} media="(max-width: 767px)" type="video/mp4" />}
             <source src={asset(video.src)} type="video/mp4" />
