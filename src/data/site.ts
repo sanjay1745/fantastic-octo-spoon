@@ -19,6 +19,11 @@ export const site = {
    * Set to null to fall back to the on-site /contact page.
    */
   tourUrl: 'https://link.clublifepro.com/widget/booking/oY43OaIkWwVuXrB1QIhk' as string | null,
+  /**
+   * Coaching consultation form (ClubLifePro). Every "Book a consultation" CTA uses it.
+   * Set to null to fall back to the on-site /contact page.
+   */
+  consultUrl: 'https://link.clublifepro.com/widget/form/nm4QLUVVZajiQcyjb5mB' as string | null,
   founder: {
     name: 'Jeremy Buendia',
     title: "4x Men's Physique Olympia Champion",
