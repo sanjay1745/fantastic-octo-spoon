@@ -80,7 +80,20 @@ export const rosevillePlans: Plan[] = [
   },
 ]
 
+/** Punch card leads: we want visitors to choose it over a single day pass. */
 export const rosevillePasses: Plan[] = [
+  {
+    id: 'punch-card',
+    name: '10-Visit Punch Card',
+    price: 110,
+    cadence: 'once',
+    term: '10 visits · never expires',
+    visits: 10,
+    summary: 'Coming in more than a few times? Save over buying day passes.',
+    featured: true,
+    purchase: 'online',
+    buyUrl: 'https://secure.peakpayment.com/4340/join/?p=1285',
+  },
   {
     id: 'day-pass',
     name: 'Day Pass',
@@ -90,19 +103,18 @@ export const rosevillePasses: Plan[] = [
     summary: 'Available any time in person at the front desk.',
     purchase: 'in-person',
   },
-  {
-    id: 'punch-card',
-    name: '10-Visit Punch Card',
-    price: 110,
-    cadence: 'once',
-    term: '10 visits · never expires',
-    visits: 10,
-    summary: 'Coming in more than a few times? Save over buying day passes.',
-    purchase: 'online',
-    buyUrl: 'https://secure.peakpayment.com/4340/join/?p=1285',
-  },
 ]
 
 export function formatPrice(plan: Pick<Plan, 'price' | 'cadence'>): { amount: string; per: string } {
   return { amount: `$${plan.price}`, per: plan.cadence === 'month' ? '/mo' : '' }
+}
+
+/** Savings line for the punch card, derived from the day pass price, e.g. "$11 per visit · save $140 vs. day passes". */
+export function punchCardSavings(passes: Plan[]): string | undefined {
+  const day = passes.find((p) => p.id === 'day-pass')
+  const card = passes.find((p) => p.id === 'punch-card')
+  if (!day || !card?.visits) return undefined
+  const perVisit = card.price / card.visits
+  const saved = day.price * card.visits - card.price
+  return `$${perVisit % 1 ? perVisit.toFixed(2) : perVisit} per visit · save $${saved} vs. day passes`
 }

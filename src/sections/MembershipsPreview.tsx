@@ -1,13 +1,15 @@
 import Button from '../components/Button'
 import PlanCard from '../components/PlanCard'
 import SectionHeader from '../components/SectionHeader'
-import SmartLink from '../components/SmartLink'
-import { formatPrice } from '../data/memberships'
+import { formatPrice, punchCardSavings } from '../data/memberships'
 import { primaryLocation as loc } from '../data/locations'
 import { tourHref } from '../lib/cta'
 import styles from './MembershipsPreview.module.css'
 
-const punchCard = loc.passes.find((p) => p.purchase === 'online')
+/** The pass we steer visitors toward (punch card), and the rest (day pass). */
+const lead = loc.passes.find((p) => p.featured) ?? loc.passes[0]
+const others = loc.passes.filter((p) => p !== lead)
+const savings = punchCardSavings(loc.passes)
 
 export default function MembershipsPreview() {
   return (
@@ -27,33 +29,41 @@ export default function MembershipsPreview() {
         </div>
 
         <div className={styles.passes} data-reveal>
-          <p className={styles.passesTitle}>Just visiting?</p>
-          <ul role="list" className={styles.passList}>
-            {loc.passes.map((p) => {
-              const { amount } = formatPrice(p)
-              return (
-                <li key={p.id}>
-                  <span className={styles.passName}>{p.name}</span>
-                  <span className={styles.passPrice}>{amount}</span>
-                  <span className={styles.passTerm}>{p.term}</span>
-                </li>
-              )
-            })}
-          </ul>
-          <p className={styles.passNote}>
-            Day passes are sold at the front desk.{' '}
-            {punchCard?.buyUrl ? (
-              <>
-                Punch cards are sold at the club or{' '}
-                <SmartLink href={punchCard.buyUrl} className={styles.passLink}>
-                  online
-                </SmartLink>
-                .
-              </>
-            ) : (
-              'Punch cards are sold at the club.'
-            )}
-          </p>
+          <h3 className={styles.passesTitle}>Just visiting?</h3>
+
+          <div className={styles.lead}>
+            <div className={styles.leadInfo}>
+              <p className={styles.leadName}>{lead.name}</p>
+              <p className={styles.leadTerm}>{lead.term}</p>
+              {savings && lead.id === 'punch-card' && <p className={styles.savings}>{savings}</p>}
+            </div>
+            <p className={styles.leadPrice}>{formatPrice(lead).amount}</p>
+            <div className={styles.leadBuy}>
+              {lead.purchase === 'online' && lead.buyUrl ? (
+                <>
+                  <Button href={lead.buyUrl} variant="light">
+                    Buy a punch card
+                  </Button>
+                  <p className={styles.buyNote}>Or buy at the front desk</p>
+                </>
+              ) : (
+                <p className={styles.buyNote}>Available at the front desk</p>
+              )}
+            </div>
+          </div>
+
+          {others.map((p) => (
+            <div key={p.id} className={styles.other}>
+              <p>
+                <span className={styles.otherName}>{p.name}</span>{' '}
+                <span className={styles.otherPrice}>{formatPrice(p).amount}</span>
+              </p>
+              <p className={styles.otherTerm}>
+                {p.term}
+                {p.purchase === 'in-person' && ' · front desk only'}
+              </p>
+            </div>
+          ))}
         </div>
 
         <div className={styles.actions}>

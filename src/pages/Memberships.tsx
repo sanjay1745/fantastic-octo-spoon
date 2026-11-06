@@ -4,21 +4,11 @@ import PageHero from '../components/PageHero'
 import PlanCard from '../components/PlanCard'
 import SectionHeader from '../components/SectionHeader'
 import { faqsFor } from '../data/faq'
-import { type Location, primaryLocation } from '../data/locations'
+import { primaryLocation } from '../data/locations'
+import { punchCardSavings } from '../data/memberships'
 import { joinHref, tourHref } from '../lib/cta'
 import FinalCta from '../sections/FinalCta'
 import styles from './Memberships.module.css'
-
-/** Savings line for the punch card, derived from the day pass price. */
-function punchCardSavings(loc: Location): string | undefined {
-  const day = loc.passes.find((p) => p.id === 'day-pass')
-  const card = loc.passes.find((p) => p.id === 'punch-card')
-  if (!day || !card?.visits) return undefined
-  const visits = card.visits
-  const perVisit = card.price / visits
-  const saved = day.price * visits - card.price
-  return `$${perVisit % 1 ? perVisit.toFixed(2) : perVisit} per visit · save $${saved} vs. day passes`
-}
 
 export default function Memberships() {
   const loc = primaryLocation
@@ -57,8 +47,8 @@ export default function Memberships() {
           <SectionHeader
             eyebrow="Drop in"
             id="passes-title"
-            title="Day passes & punch cards."
-            lead="Visiting, or not ready for a membership? Day passes are sold at the front desk. Punch cards are sold online or at the club."
+            title="Punch cards & day passes."
+            lead="Visiting, or not ready for a membership? The punch card is the better value, sold online or at the club. Day passes are sold at the front desk."
           />
           <div className={styles.passes}>
             {loc.passes.map((p, i) => (
@@ -67,7 +57,7 @@ export default function Memberships() {
                 plan={p}
                 joinUrl={loc.joinUrl}
                 style={delay(i)}
-                extra={p.id === 'punch-card' ? punchCardSavings(loc) : undefined}
+                extra={p.id === 'punch-card' ? punchCardSavings(loc.passes) : undefined}
               />
             ))}
           </div>
