@@ -30,10 +30,11 @@ export default function PlanCard({ plan, joinUrl, style, extra }: Props) {
       </p>
       <p className={styles.term}>{plan.term}</p>
       <p className={styles.summary}>{plan.summary}</p>
-      {plan.perk && <p className={styles.perk}>{plan.perk}</p>}
       {plan.fine && <p className={styles.fine}>{plan.fine}</p>}
       {extra && <p className={styles.extra}>{extra}</p>}
+      {/* The CTA block is pinned to the bottom, so the perk line sits in the same spot on every card */}
       <div className={styles.cta}>
+        {plan.perk && <p className={styles.perk}>{plan.perk}</p>}
         {plan.purchase === 'join' ? (
           <Button href={joinUrl} variant={plan.featured ? 'primary' : 'light'}>
             Join Now

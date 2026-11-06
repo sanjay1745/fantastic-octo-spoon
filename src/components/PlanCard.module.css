@@ -59,6 +59,7 @@
 .summary { margin-top: var(--space-3); color: var(--color-text-muted); }
 .fine { font-size: var(--text-sm); color: var(--color-text-dim); }
 .perk {
+  margin-bottom: var(--space-4);
   padding-left: var(--space-3);
   border-left: 2px solid var(--color-red);
   font-size: var(--text-sm);
