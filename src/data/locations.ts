@@ -35,6 +35,8 @@ export interface Location {
   hoursNote?: string
   /** ClubLifePro online signup for this location */
   joinUrl: string
+  /** Google place ID (starts with "ChIJ…"), for live Google reviews. Find it with Google's Place ID Finder. */
+  googlePlaceId?: string | null
   sizeSqFt?: number
   plans: Plan[]
   passes: Plan[]
@@ -61,6 +63,8 @@ export const locations: Location[] = [
     ],
     hoursNote: 'Holiday hours may vary.',
     joinUrl: 'https://secure.peakpayment.com/4340/join/?p=1088',
+    // TODO(owner): Google place ID for Stoik Gym Roseville. While null, the reviews section is hidden.
+    googlePlaceId: null,
     sizeSqFt: 6000,
     plans: rosevillePlans,
     passes: rosevillePasses,

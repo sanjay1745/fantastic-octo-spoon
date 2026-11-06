@@ -27,6 +27,9 @@
   background: var(--color-surface);
 }
 
+/* Non-photo slides size to their content */
+.custom { aspect-ratio: auto; overflow: visible; }
+
 .controls {
   display: flex;
   align-items: center;

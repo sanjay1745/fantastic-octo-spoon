@@ -24,6 +24,14 @@ export const site = {
    * Set to null to fall back to the on-site /contact page.
    */
   consultUrl: 'https://link.clublifepro.com/widget/form/nm4QLUVVZajiQcyjb5mB' as string | null,
+  /**
+   * Google Maps Platform browser key, used only to load live Google reviews (Places API).
+   * This key ships to the browser by design. In Google Cloud, restrict it to:
+   *   - Application restriction: websites → the site's domains (and localhost for dev)
+   *   - API restriction: Maps JavaScript API + Places API (New)
+   * TODO(owner): supply the key. While null, the reviews section is hidden.
+   */
+  googleMapsApiKey: null as string | null,
   founder: {
     name: 'Jeremy Buendia',
     title: "4x Men's Physique Olympia Champion",

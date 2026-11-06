@@ -1,6 +1,7 @@
 import Amenities from '../sections/Amenities'
 import Coaching from '../sections/Coaching'
 import FinalCta from '../sections/FinalCta'
+import GoogleReviews from '../sections/GoogleReviews'
 import Hero from '../sections/Hero'
 import HomeFaq from '../sections/HomeFaq'
 import MembershipsPreview from '../sections/MembershipsPreview'
@@ -20,6 +21,7 @@ export default function Home() {
       <Stats />
       <Results />
       <Visit />
+      <GoogleReviews />
       <HomeFaq />
       <FinalCta />
     </>

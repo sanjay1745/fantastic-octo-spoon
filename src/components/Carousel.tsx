@@ -1,20 +1,34 @@
-import { useCallback, useEffect, useId, useRef, useState } from 'react'
+import { type ReactNode, useCallback, useEffect, useId, useRef, useState } from 'react'
 import type { ImageSlot } from '../data/media'
 import styles from './Carousel.module.css'
 import Media from './Media'
 
 interface Props {
-  items: ImageSlot[]
+  /** Photo slides (the default use) */
+  items?: ImageSlot[]
+  /** Any other slides, e.g. review cards. Used instead of `items`. */
+  slides?: { key: string; node: ReactNode }[]
   /** Accessible name for the carousel region */
   label: string
+  /** What one slide is, for screen readers and button labels: 'photos', 'reviews' */
+  noun?: string
+  /** Extra class for each slide, e.g. to drop the photo aspect ratio */
+  slideClassName?: string
 }
 
 /**
- * Photo carousel: native horizontal scrolling with scroll-snap (swipe on phones,
+ * Carousel: native horizontal scrolling with scroll-snap (swipe on phones,
  * trackpad/shift-scroll on desktop), plus previous/next buttons and arrow keys.
  * No autoplay. Works without JS as a plain scrollable row.
  */
-export default function Carousel({ items, label }: Props) {
+export default function Carousel({ items, slides: custom, label, noun = 'photos', slideClassName }: Props) {
+  const slides =
+    custom ??
+    (items ?? []).map((item, i) => ({
+      key: item.src ?? String(i),
+      node: <Media slot={item} fill sizes="(min-width: 1100px) 30vw, (min-width: 640px) 45vw, 80vw" />,
+    }))
+  const count = slides.length
   const track = useRef<HTMLUListElement>(null)
   const [state, setState] = useState({ atStart: true, atEnd: false, index: 0 })
   const id = useId()
@@ -27,9 +41,9 @@ export default function Carousel({ items, label }: Props) {
     setState({
       atStart: el.scrollLeft <= 4,
       atEnd: el.scrollLeft + el.clientWidth >= el.scrollWidth - 4,
-      index: Math.min(items.length - 1, Math.round(el.scrollLeft / step)),
+      index: Math.min(count - 1, Math.round(el.scrollLeft / step)),
     })
-  }, [items.length])
+  }, [count])
 
   useEffect(() => {
     const el = track.current
@@ -64,7 +78,7 @@ export default function Carousel({ items, label }: Props) {
         role="list"
         className={styles.track}
         tabIndex={0}
-        aria-label={`${label}, ${items.length} photos. Use arrow keys to scroll.`}
+        aria-label={`${label}, ${count} ${noun}. Use arrow keys to scroll.`}
         onKeyDown={(e) => {
           if (e.key === 'ArrowRight') {
             e.preventDefault()
@@ -75,9 +89,14 @@ export default function Carousel({ items, label }: Props) {
           }
         }}
       >
-        {items.map((item, i) => (
-          <li key={item.src ?? i} className={styles.slide} aria-roledescription="slide" aria-label={`${i + 1} of ${items.length}`}>
-            <Media slot={item} fill sizes="(min-width: 1100px) 30vw, (min-width: 640px) 45vw, 80vw" />
+        {slides.map((slide, i) => (
+          <li
+            key={slide.key}
+            className={[styles.slide, custom ? styles.custom : '', slideClassName].filter(Boolean).join(' ')}
+            aria-roledescription="slide"
+            aria-label={`${i + 1} of ${count}`}
+          >
+            {slide.node}
           </li>
         ))}
       </ul>
@@ -85,18 +104,18 @@ export default function Carousel({ items, label }: Props) {
       <div className="container">
         <div className={styles.controls}>
           <p className={styles.count} aria-hidden="true">
-            <span>{String(state.index + 1).padStart(2, '0')}</span> / {String(items.length).padStart(2, '0')}
+            <span>{String(state.index + 1).padStart(2, '0')}</span> / {String(count).padStart(2, '0')}
           </p>
           <div className={styles.progress} aria-hidden="true">
-            <span style={{ transform: `scaleX(${(state.index + 1) / items.length})` }} />
+            <span style={{ transform: `scaleX(${(state.index + 1) / count})` }} />
           </div>
           <div className={styles.buttons}>
-            <button type="button" onClick={() => go(-1)} disabled={state.atStart} aria-controls={id} aria-label="Previous photos">
+            <button type="button" onClick={() => go(-1)} disabled={state.atStart} aria-controls={id} aria-label={`Previous ${noun}`}>
               <svg viewBox="0 0 16 16" aria-hidden="true">
                 <path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </button>
-            <button type="button" onClick={() => go(1)} disabled={state.atEnd} aria-controls={id} aria-label="Next photos">
+            <button type="button" onClick={() => go(1)} disabled={state.atEnd} aria-controls={id} aria-label={`Next ${noun}`}>
               <svg viewBox="0 0 16 16" aria-hidden="true">
                 <path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
