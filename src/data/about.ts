@@ -28,5 +28,5 @@ const img = (src: string, alt: string, aspect: string, focus?: string): ImageSlo
 
 export const aboutMedia = {
   founder: img('media/about-founder', `${site.founder.name} coaching a member on the Stoik Gym floor`, '4 / 5', '50% 35%'),
-  community: img('media/about-community', 'Members training together on a busy night at Stoik Gym', '4 / 5', '50% 45%'),
+  community: img('media/about-community', 'Members gathered around a friend pressing on the Smith machine at Stoik Gym', '4 / 5', '50% 60%'),
 }

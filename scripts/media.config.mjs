@@ -47,7 +47,7 @@ export const images = {
 
   // About
   'about-founder': { file: 'jeremy coaching.jpg' },
-  'about-community': { file: '20250728SSM-43.jpg' },
+  'about-community': { file: 'community.jpg' },
 
   // Coach portraits
   'coach-cinthia-beltran': { file: 'cinthia.jpg' },
