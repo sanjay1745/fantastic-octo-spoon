@@ -29,9 +29,9 @@ export const site = {
    * This key ships to the browser by design. In Google Cloud, restrict it to:
    *   - Application restriction: websites → the site's domains (and localhost for dev)
    *   - API restriction: Maps JavaScript API + Places API (New)
-   * TODO(owner): supply the key. While null, the reviews section is hidden.
+   * Set to null to hide the reviews section.
    */
-  googleMapsApiKey: null as string | null,
+  googleMapsApiKey: 'AIzaSyA5g17Jlh-DPDNXt314qf5E6It3O5f03kM' as string | null,
   founder: {
     name: 'Jeremy Buendia',
     title: "4x Men's Physique Olympia Champion",

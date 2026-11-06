@@ -63,8 +63,7 @@ export const locations: Location[] = [
     ],
     hoursNote: 'Holiday hours may vary.',
     joinUrl: 'https://secure.peakpayment.com/4340/join/?p=1088',
-    // TODO(owner): Google place ID for Stoik Gym Roseville. While null, the reviews section is hidden.
-    googlePlaceId: null,
+    googlePlaceId: 'ChIJWYlRVQYhm4ARUClpZINuyvo',
     sizeSqFt: 6000,
     plans: rosevillePlans,
     passes: rosevillePasses,
