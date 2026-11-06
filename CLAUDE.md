@@ -54,7 +54,14 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
 - Hours: 5am–11pm weekdays, 6am–10pm weekends. Holiday hours may vary.
 - Phone 916-306-1697 · support@stoikgym.com · Instagram & TikTok @stoik.gyms
 - Apparel: Shopify at https://stoikathletix.com/
-- Age: members must be 16+. Members under 18 must interview with Jeremy and maintain a 3.0 GPA.
+- Age: **always market Stoik Gym as an 18+ gym.** 16–17 year olds are allowed only after an interview with Jeremy and must maintain a 3.0 GPA. Mention this only where relevant (e.g. an FAQ answer), never as a headline.
+- Primary lead CTA is a **free tour** (not a free trial). The booking URL will be supplied later. Until then it lives as one placeholder value in `src/data/site.ts`.
+- Pricing:
+  - Standard: $109/mo on a 12-month contract, or $129/mo month-to-month with no contract.
+  - Student / first responder: $79/mo, month-to-month. Status is verified at sign-up or on the first visit.
+  - Family: $180/mo for up to 3 people, plus $30/mo for each additional person.
+  - Day pass: $25, sold in person at the club only (no online purchase).
+  - 10-visit punch card: $110 for 10 gym visits, never expires. Position it as the better-value alternative to day passes.
 - More locations are coming.
 
 ## Working conventions
