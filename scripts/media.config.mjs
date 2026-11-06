@@ -13,7 +13,7 @@ export const images = {
   'cold-plunge': { video: tourVideo, t: 10.5 },
   posing: { file: '20260528SSM-39.jpg' },
   fuel: { video: tourVideo, t: 30.5 },
-  apparel: { video: tourVideo, t: 27.5 },
+  apparel: { file: '20260805_STOIK ATHLETIX WEBSITE BANNER.png' },
 
   // Coaching
   'coaching-in-person': { file: '20260325SSM-29.jpg' },

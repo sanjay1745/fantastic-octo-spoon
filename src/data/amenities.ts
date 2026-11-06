@@ -39,7 +39,7 @@ export const amenities: Amenity[] = [
     id: 'fuel',
     title: 'Pro shop',
     blurb: 'The largest Evogen selection in the area, plus RAW, Ryse and Ghost.',
-    media: 'fuel',
+    media: 'proShop',
   },
   {
     id: 'meal-prep',

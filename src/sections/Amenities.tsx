@@ -34,7 +34,8 @@ export default function Amenities() {
                 href={a.href}
                 className={styles.card}
                 style={{ '--reveal-delay': `${(i % 3) * 90}ms` } as CSSProperties}
-                sizes="(min-width: 768px) 33vw, 80vw"
+                // First and last cards span two columns in the desktop grid
+                sizes={i === 0 || i === amenities.length - 1 ? '(min-width: 768px) 66vw, 80vw' : '(min-width: 768px) 33vw, 80vw'}
               />
             </li>
           ))}

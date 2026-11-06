@@ -63,7 +63,7 @@ export const media = {
   posing: slot('media/posing', 'Posing room', 'A coach guiding a physique athlete through posing at Stoik Gym', '4 / 5', '50% 35%'),
   fuel: slot('media/fuel', 'Supplement store + drinks', 'The supplement wall and front desk at Stoik Gym', '4 / 5', '62% 50%'),
   mealPrep: slot(null, 'Meal prep cooler / packaged meals', 'Prepared meals available at Stoik Gym'),
-  apparel: slot('media/apparel', 'Stoik apparel', 'Stoik apparel on display beneath the Stoik Gym mural', '16 / 10', '35% 70%'),
+  apparel: slot('media/apparel', 'Stoik apparel', 'Members wearing Stoik apparel: tanks, tees and the Stoik Gym hat', '16 / 10', '42% 40%'),
 
   coachingInPerson: slot('media/coaching-in-person', 'Coach cueing a client', 'A Stoik Gym coach working with a member on a machine', '4 / 5', '50% 40%'),
   coachingPersonal: slot('media/coaching-pt', 'Coach cueing a client', 'A Stoik Gym coach cueing a member through a cable press', '4 / 5', '45% 35%'),
