@@ -20,10 +20,17 @@ export interface Highlight {
   link?: { href: string; label: string }
 }
 
+export interface GymRule {
+  /** Optional short label shown in bold, e.g. "Be respectful" */
+  title?: string
+  text: string
+}
+
 export interface Facility {
   /** Carousel of the floor */
   gallery: ImageSlot[]
   highlights: Highlight[]
+  rules: GymRule[]
 }
 
 const g = (slot: string, alt: string, focus?: string): ImageSlot => ({
@@ -96,6 +103,26 @@ export const facilities: Record<string, Facility> = {
         body: ['Fresh meal preps made locally by Full & Fit, ready to grab on your way out.'],
         images: [media.mealPrep],
       },
+    ],
+    rules: [
+      { title: 'Be respectful', text: 'Treat the gym like your home, and the members like your family.' },
+      { text: 'Wear proper footwear and clothing in the gym.' },
+      { text: 'Re-rack your weights correctly.' },
+      { text: "Don't slam the weights." },
+      { text: 'Clean machines and benches after use.' },
+      { text: "No illegal substances or needles. Don't put the gym in jeopardy." },
+      { text: "No vaping or smoking in the gym, and don't come into the gym smelling like cigarettes or marijuana." },
+      { text: 'Filming on phones and use of tripods is allowed, but be considerate of others.' },
+      { text: 'Shirts stay on, unless you are filming or posing. Please get permission if you want to work out shirtless.' },
+      { text: 'Mix supplement powders at the front desk or in the lobby.' },
+      { text: 'Maintain good hygiene. Body odor will be addressed.' },
+      { text: 'Guests must purchase guest passes at the front desk.' },
+      { title: 'Report issues', text: 'Let staff know about broken equipment, injuries or any other issues.' },
+      { title: 'Train with purpose', text: 'No loitering.' },
+      { title: 'Locker use', text: 'Lockers are day-use only. No overnight storage. Anything left in lockers overnight will be disposed of.' },
+      { title: 'Check-in required', text: 'Always scan in at the front desk.' },
+      { title: '3-strike rule', text: 'Memberships will be revoked beyond 2 warnings.' },
+      { text: 'Stoik Gym is 18+, unless you get permission.' },
     ],
   },
 }

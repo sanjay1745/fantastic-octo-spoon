@@ -101,6 +101,33 @@ export default function TheGym({ location = primaryLocation }: { location?: Loca
       )}
 
       <Visit location={location} />
+
+      {facility && facility.rules.length > 0 && (
+        <section id="rules" className={`section ${styles.rulesSection}`} aria-labelledby="rules-title">
+          <div className={`container ${styles.rulesGrid}`}>
+            <SectionHeader
+              eyebrow="House rules"
+              id="rules-title"
+              title="Gym rules."
+              lead="A few standards that keep Stoik Gym the best place to train."
+            />
+            <ol className={styles.rules}>
+              {facility.rules.map((r, i) => (
+                <li key={r.text} data-reveal style={{ ['--reveal-delay' as string]: `${(i % 2) * 60}ms` }}>
+                  <span className={styles.ruleNum} aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <p>
+                    {r.title && <strong>{r.title}: </strong>}
+                    {r.text}
+                  </p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+      )}
+
       <FinalCta />
     </>
   )
