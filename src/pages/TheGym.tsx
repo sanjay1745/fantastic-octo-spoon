@@ -64,6 +64,7 @@ export default function TheGym({ location = primaryLocation }: { location?: Loca
     <>
       <Hero
         eyebrow={`The gym · ${location.name}, ${location.address.region}`}
+        tour={facility?.tour3d}
         title="Built for serious training."
         lead={`${size ? `${size} of` : 'A floor of'} premium Skelcore equipment, a full recovery room and a private posing room.`}
         actions={

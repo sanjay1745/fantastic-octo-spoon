@@ -1,0 +1,94 @@
+/* Explore button in the hero */
+.explore { gap: var(--space-2); }
+.cube { width: 1.15rem; height: 1.15rem; flex: none; }
+.size { color: var(--color-text-muted); font-weight: 500; }
+
+/* Open tour: fills the window (under the floating nav) while open */
+.tour {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: rgb(10 10 10 / 0.35);
+  outline: none;
+}
+.canvas { position: absolute; inset: 0; touch-action: none; }
+.canvas canvas { display: block; width: 100% !important; height: 100% !important; }
+
+.status {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: var(--space-4);
+  padding: var(--gutter);
+  text-align: center;
+  background: rgb(10 10 10 / 0.55);
+  pointer-events: none;
+}
+.status p { font-weight: 500; }
+.bar { width: min(18rem, 70vw); height: 2px; background: var(--color-line); overflow: hidden; }
+.bar span {
+  display: block;
+  height: 100%;
+  background: var(--color-text);
+  transform-origin: left;
+  transition: transform 200ms linear;
+}
+
+.toolbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-block: var(--space-5) clamp(var(--space-5), 4vw, var(--space-7));
+  background: linear-gradient(180deg, transparent, rgb(10 10 10 / 0.85));
+  pointer-events: none;
+}
+.toolbarInner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3) var(--space-5);
+}
+.toolbarInner > * { pointer-events: auto; }
+
+.spots { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+.spot {
+  min-height: 2.5rem;
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-pill);
+  background: rgb(10 10 10 / 0.6);
+  backdrop-filter: blur(8px);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--color-text);
+  transition: background-color var(--dur-fast) ease, border-color var(--dur-fast) ease;
+}
+.spot:hover { border-color: var(--color-text); }
+.spot[aria-pressed='true'] { border-color: var(--color-red); background: rgb(225 37 27 / 0.18); }
+
+.hint { font-size: var(--text-sm); color: rgb(255 255 255 / 0.75); pointer-events: none; }
+.hintCoarse { display: none; }
+@media (pointer: coarse) {
+  .hintFine { display: none; }
+  .hintCoarse { display: inline; }
+}
+
+.exit { margin-left: auto; }
+
+@media (max-width: 639px) {
+  .hint { display: none; }
+  .spots { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); width: calc(100% + var(--gutter) * 2); }
+  .spots::-webkit-scrollbar { display: none; }
+  .spot { white-space: nowrap; }
+  .exit { margin-left: 0; width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bar span, .spot { transition: none; }
+}
+
+/* No page scrolling behind the open tour */
+:global(html:has([data-tour-open])) { overflow: hidden; }

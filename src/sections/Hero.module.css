@@ -101,3 +101,11 @@
 @keyframes heroTitleIn {
   from { transform: translateY(24px); }
 }
+
+/* 3D tour open: hand the whole hero to the viewer */
+.hero[data-tour-open] .content { opacity: 0; pointer-events: none; }
+.hero[data-tour-open] .overlay { opacity: 0; }
+.overlay, .content { transition: opacity var(--dur-base) ease; }
+@media (prefers-reduced-motion: reduce) {
+  .overlay, .content { transition: none; }
+}

@@ -61,6 +61,8 @@ export const images = {
   // Full-bleed
   'final-cta': { file: 'WIDE GYM FLOOR.jpg' },
   'hero-poster': { video: tourVideo, t: 0.5 },
+  // The Gym 3D tour: still from the drone video at the tour's start view (frame f_0001)
+  'tour-poster': { video: 'Stoik Drone Footage.mp4', t: 0.1 },
 }
 
 /** Responsive widths generated for every image (never upscaled). */

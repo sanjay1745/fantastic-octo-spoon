@@ -26,11 +26,40 @@ export interface GymRule {
   text: string
 }
 
+type Vec3 = [number, number, number]
+
+/** A camera viewpoint inside the 3D scene (scene units) */
+export interface TourView {
+  position: Vec3
+  lookAt: Vec3
+}
+
+/**
+ * Interactive 3D floor (Gaussian splat reconstructed from drone footage).
+ * Pipeline: frames → COLMAP poses → Brush training → scripts/splat-to-ksplat.mjs → public/media/3d/.
+ * Camera positions come from the COLMAP poses of the matching video frames.
+ */
+export interface FloorTour3D {
+  /** 'media/3d/<file>.ksplat' (relative to the site base) */
+  scene: string
+  /** Approximate download size in MB, shown on the button */
+  sizeMb: number
+  /** Still shown before the viewer loads; should match the start view */
+  poster: ImageSlot
+  /** The scene's "up" direction (COLMAP's axes are arbitrary) */
+  up: Vec3
+  start: TourView
+  /** Jump-to buttons */
+  spots: (TourView & { id: string; label: string })[]
+}
+
 export interface Facility {
   /** Carousel of the floor */
   gallery: ImageSlot[]
   highlights: Highlight[]
   rules: GymRule[]
+  /** Replaces the hero video on The Gym page when present */
+  tour3d?: FloorTour3D
 }
 
 const g = (slot: string, alt: string, focus?: string): ImageSlot => ({
@@ -125,6 +154,26 @@ export const facilities: Record<string, Facility> = {
       { title: '3-strike rule', text: 'Memberships will be revoked beyond 2 warnings.' },
       { text: 'Stoik Gym is 18+, unless you get permission.' },
     ],
+    tour3d: {
+      scene: 'media/3d/roseville.ksplat',
+      sizeMb: 24,
+      poster: {
+        kind: 'image',
+        src: 'media/tour-poster',
+        alt: 'The Stoik Gym Roseville training floor from above',
+        label: '3D tour start view',
+        aspect: '16 / 9',
+      },
+      up: [0.903, -0.317, -0.29],
+      start: { position: [-2.963, 0.901, -9.04], lookAt: [-2.322, 0.269, -6.178] },
+      spots: [
+        { id: 'overview', label: 'Overview', position: [-2.963, 0.901, -9.04], lookAt: [-2.322, 0.269, -6.178] },
+        { id: 'dumbbells', label: 'Dumbbells', position: [0.447, -0.926, 2.368], lookAt: [-1.004, -0.368, -0.198] },
+        { id: 'strength', label: 'Strength floor', position: [-0.414, 3.998, -5.056], lookAt: [-1.472, 1.414, -3.958] },
+        { id: 'cardio', label: 'Cardio', position: [-0.113, -1.936, 1.273], lookAt: [0.506, -1.634, 4.193] },
+        { id: 'desk', label: 'Front desk', position: [0.073, -1.04, 1.311], lookAt: [-1.365, -3.66, 1.046] },
+      ],
+    },
   },
 }
 
