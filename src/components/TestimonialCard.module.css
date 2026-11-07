@@ -27,7 +27,15 @@
 
 /* Quote text sits slightly back so the highlighted phrase reads first */
 .quote { font-size: var(--text-lg); line-height: 1.5; color: rgb(255 255 255 / 0.78); }
-.hl { font-weight: 650; color: var(--color-text); }
+.hl {
+  font-weight: 650;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.22em;
+  text-decoration-skip-ink: auto;
+}
 
 .more {
   align-self: flex-start;
