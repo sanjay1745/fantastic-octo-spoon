@@ -1,7 +1,23 @@
-import { useId, useRef } from 'react'
+import { type ReactNode, useId, useRef } from 'react'
 import { coachedBy, hasPhotos, type Testimonial } from '../data/testimonials'
 import Media from './Media'
 import styles from './TestimonialCard.module.css'
+
+/** Wraps each highlight phrase found in `text` in <strong>. Phrases not found are ignored. */
+function emphasize(text: string, highlights: string[] = []): ReactNode {
+  const found = highlights.filter((h) => h && text.includes(h))
+  if (!found.length) return text
+  const escaped = found.map((h) => h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'))
+  return text.split(new RegExp(`(${escaped.join('|')})`)).map((part, i) =>
+    found.includes(part) ? (
+      <strong key={i} className={styles.hl}>
+        {part}
+      </strong>
+    ) : (
+      part
+    ),
+  )
+}
 
 /**
  * A client story: before/after (once photos exist), pull quote and name.
@@ -29,7 +45,7 @@ export default function TestimonialCard({ t }: { t: Testimonial }) {
       )}
 
       <blockquote className={styles.quote}>
-        <p>“{t.excerpt}”</p>
+        <p>“{emphasize(t.excerpt, t.highlights)}”</p>
       </blockquote>
 
       {hasMore && (
@@ -62,7 +78,7 @@ export default function TestimonialCard({ t }: { t: Testimonial }) {
               </div>
               <div className={styles.story}>
                 {t.story.map((p, i) => (
-                  <p key={i}>{p}</p>
+                  <p key={i}>{emphasize(p, t.highlights)}</p>
                 ))}
               </div>
             </div>

@@ -17,8 +17,10 @@ export interface Testimonial {
   story: string[]
   /** Program, e.g. "Online coaching", "Fit Club" */
   program: string
-  /** Coaches the client names */
+  /** Coaches credited on the card */
   coaches?: string[]
+  /** Phrases to emphasize, each copied exactly from the excerpt or story */
+  highlights?: string[]
   /** Shown in the home page Results section */
   featured?: boolean
   before: ImageSlot
@@ -43,7 +45,8 @@ export const testimonials: Testimonial[] = [
   story({
     id: 'isaac-norman',
     name: 'Isaac Norman',
-    program: 'Bodybuilding',
+    program: 'First-time competitor',
+    highlights: ['healthier, more disciplined, and more confident'],
     coaches: ['Michael Lopez', 'Jeremy Buendia'],
     featured: true,
     excerpt:
@@ -59,7 +62,8 @@ export const testimonials: Testimonial[] = [
   story({
     id: 'nik-santos',
     name: 'Nik Santos',
-    program: 'Online coaching',
+    program: 'Lifestyle coaching',
+    highlights: ['greater results in this past month'],
     coaches: ['Michael Lopez', 'Jeremy Buendia'],
     featured: true,
     excerpt:
@@ -75,7 +79,8 @@ export const testimonials: Testimonial[] = [
     id: 'juan-magana',
     name: 'Juan Magana',
     program: 'Fit Club',
-    coaches: ['Michael Lopez'],
+    highlights: ['life changing'],
+    coaches: ['Michael Lopez', 'Jeremy Buendia'],
     featured: true,
     excerpt: 'Working with Stoik Fit Club has been life changing. Especially coach Michael Lopez. Incredibly knowledgeable. Always just a message away.',
     story: [
@@ -86,7 +91,8 @@ export const testimonials: Testimonial[] = [
     id: 'brian-bradford',
     name: 'Brian Bradford',
     program: 'Contest prep',
-    coaches: ['Jeremy Buendia'],
+    highlights: ['the best physical shape of my life'],
+    coaches: ['Michael Lopez', 'Jeremy Buendia'],
     excerpt: 'Jeremy and the entire Team Stoik staff pushed me, guided me, and helped me reach the best physical shape of my life.',
     story: [
       'Being part of Team Stoik has been an incredible experience, and I feel truly blessed and grateful for the opportunity to work alongside such talented and knowledgeable professionals.',
@@ -99,6 +105,8 @@ export const testimonials: Testimonial[] = [
     id: 'dominick-lee',
     name: 'Dominick Lee',
     program: 'Bodybuilding',
+    coaches: ['Michael Lopez', 'Jeremy Buendia'],
+    highlights: ['changed my mindset, confidence, and overall lifestyle'],
     excerpt: 'Being coached by Team Stoik not only changed my overall physique but also changed my mindset, confidence, and overall lifestyle.',
     story: [
       'Being coached by Team Stoik not only changed my overall physique but also changed my mindset, confidence, and overall lifestyle. The coaches are not just there to give me a workout regiment and a diet plan, but they are there beside me throughout the whole journey and process. They gave me a simple yet precise plan and in return I give them my discipline, dedication, relentless effort, and personal accountability in order to attain my goal and victory. So far it has yielded very expressive results that has helped me unlock my potential as an aspiring bodybuilder and as well as becoming a more well-rounded athlete.',
@@ -108,7 +116,8 @@ export const testimonials: Testimonial[] = [
     id: 'jason-depuy',
     name: 'Jason Depuy',
     program: 'Coaching',
-    coaches: ['Jeremy Buendia', 'Michael Lopez'],
+    highlights: ['none compare to Jeremy, Michael, and the entire Stoik family'],
+    coaches: ['Michael Lopez', 'Jeremy Buendia'],
     excerpt: 'I’ve had coaches in the past, but none compare to Jeremy, Michael, and the entire Stoik family.',
     story: [
       'Since joining Stoik Gym and having Jeremy and Michael as my coaches, I’m finally starting to build the physique and confidence I’ve always wanted. I’ve had coaches in the past, but none compare to Jeremy, Michael, and the entire Stoik family. The knowledge, support, and accountability they provide are next level. I couldn’t be happier with the progress I’m making!',

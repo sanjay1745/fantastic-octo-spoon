@@ -25,7 +25,9 @@
   text-transform: uppercase;
 }
 
-.quote { font-size: var(--text-lg); line-height: 1.5; }
+/* Quote text sits slightly back so the highlighted phrase reads first */
+.quote { font-size: var(--text-lg); line-height: 1.5; color: rgb(255 255 255 / 0.78); }
+.hl { font-weight: 650; color: var(--color-text); }
 
 .more {
   align-self: flex-start;
