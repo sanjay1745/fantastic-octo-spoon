@@ -131,3 +131,13 @@
   .perk { transition: none; }
   .perk:hover { transform: none; }
 }
+
+/* Client stories */
+.storiesSection { border-top: 1px solid var(--color-line); }
+.stories { display: grid; gap: var(--space-4); }
+@media (min-width: 700px) {
+  .stories { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1100px) {
+  .stories { grid-template-columns: repeat(3, 1fr); }
+}

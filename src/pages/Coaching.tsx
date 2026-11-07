@@ -5,9 +5,11 @@ import Media from '../components/Media'
 import PageHero from '../components/PageHero'
 import SectionHeader, { Eyebrow } from '../components/SectionHeader'
 import SmartLink from '../components/SmartLink'
+import TestimonialCard from '../components/TestimonialCard'
 import { type Club, clubs, coachingTiers, formatSession, getClub, onlineCoaching, personalTraining } from '../data/coaching'
 import { faqsFor } from '../data/faq'
 import { media } from '../data/media'
+import { testimonials } from '../data/testimonials'
 import { consultFor } from '../lib/cta'
 import FinalCta from '../sections/FinalCta'
 import styles from './Coaching.module.css'
@@ -16,6 +18,7 @@ const jump = [
   { href: '#personal-training', label: 'Personal training' },
   { href: '#online-coaching', label: 'Online coaching' },
   { href: '#clubs', label: 'Clubs' },
+  { href: '#stories', label: 'Results' },
   { href: '#team', label: 'The team' },
 ]
 
@@ -166,6 +169,20 @@ export default function Coaching() {
               <ClubCard key={c.id} club={c} index={i} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Client stories */}
+      <section id="stories" className={`section ${styles.storiesSection}`} aria-labelledby="stories-title">
+        <div className="container">
+          <SectionHeader eyebrow="Results" id="stories-title" title="In their words." lead="Coaching clients on what changed, in the gym and out of it." />
+          <ul role="list" className={styles.stories}>
+            {testimonials.map((t, i) => (
+              <li key={t.id} data-reveal style={delay(i % 3)}>
+                <TestimonialCard t={t} />
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
