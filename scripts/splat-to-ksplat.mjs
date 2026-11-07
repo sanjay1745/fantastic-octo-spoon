@@ -7,6 +7,9 @@
 //   --alpha=5          drop splats with opacity below this (0-255); removes faint haze
 //   --sh=0             spherical-harmonics degree to keep (0 = flat colour, smallest; 1 = some sheen)
 //   --box=x0,x1,y0,y1,z0,z1   drop splats outside this box (scene units); trims floaters outside the room
+//   --room=frame.json  room-aligned crop: { up, a, b } axes plus "crop": { h: [floor, ceiling], a: [..], b: [..] }
+//                      (heights/extents measured along those axes). Removes junk under the floor and above the ceiling.
+//   --maxscale=0.35    drop splats whose largest radius exceeds this (big, blurry haze blobs)
 //   --max=1000000      keep at most this many splats (largest × most opaque first)
 //
 // The .ply originals live in /media (git-ignored). The output goes to public/media/3d/.
@@ -36,6 +39,19 @@ if (box) {
   const [x0, x1, y0, y1, z0, z1] = box
   splats = splats.filter((s) => s[0] >= x0 && s[0] <= x1 && s[1] >= y0 && s[1] <= y1 && s[2] >= z0 && s[2] <= z1)
   console.log(`inside box: ${splats.length.toLocaleString()}`)
+}
+if (opt.room) {
+  const room = JSON.parse(fs.readFileSync(opt.room, 'utf8'))
+  const { up, a, b, crop } = room
+  const d = (s, v) => s[0] * v[0] + s[1] * v[1] + s[2] * v[2]
+  const inside = (s, axis, range) => !range || (d(s, axis) >= range[0] && d(s, axis) <= range[1])
+  splats = splats.filter((s) => inside(s, up, crop.h) && inside(s, a, crop.a) && inside(s, b, crop.b))
+  console.log(`inside room: ${splats.length.toLocaleString()}`)
+}
+if (opt.maxscale) {
+  const limit = Number(opt.maxscale)
+  splats = splats.filter((s) => Math.max(Math.abs(s[3]), Math.abs(s[4]), Math.abs(s[5])) <= limit)
+  console.log(`after size limit: ${splats.length.toLocaleString()}`)
 }
 if (splats.length > max) {
   const weight = (s) => s[13] * Math.abs(s[3] * s[4] * s[5]) ** (1 / 3)

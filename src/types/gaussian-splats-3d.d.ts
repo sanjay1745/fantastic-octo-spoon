@@ -31,7 +31,21 @@ declare module '@mkkellogg/gaussian-splats-3d' {
   export class Viewer {
     constructor(options?: ViewerOptions)
     camera: PerspectiveCamera
-    controls: { target: Vector3; update(): void; enabled: boolean } | undefined
+    controls:
+      | {
+          target: Vector3
+          update(): void
+          enabled: boolean
+          minDistance: number
+          maxDistance: number
+          minPolarAngle: number
+          maxPolarAngle: number
+          enableDamping: boolean
+          dampingFactor: number
+          addEventListener(type: 'change', listener: () => void): void
+          removeEventListener(type: 'change', listener: () => void): void
+        }
+      | undefined
     addSplatScene(path: string, options?: SceneOptions): Promise<void>
     start(): void
     dispose(): Promise<void>

@@ -63,7 +63,14 @@ export default function FloorTour({ tour, onClose }: { tour: FloorTour3D; onClos
   }, [onClose])
 
   return (
-    <div ref={panel} className={styles.tour} role="region" aria-label="Interactive 3D view of the gym floor" tabIndex={-1}>
+    <div
+      ref={panel}
+      className={styles.tour}
+      data-status={status}
+      role="region"
+      aria-label="Interactive 3D view of the gym floor"
+      tabIndex={-1}
+    >
       <Suspense fallback={null}>
         <FloorTourViewer
           ref={viewer}

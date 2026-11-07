@@ -40,6 +40,8 @@ export interface TourView {
  * Camera positions come from the COLMAP poses of the matching video frames.
  */
 export interface FloorTour3D {
+  /** Show it on the site. When false, The Gym hero keeps the video. */
+  enabled: boolean
   /** 'media/3d/<file>.ksplat' (relative to the site base) */
   scene: string
   /** Approximate download size in MB, shown on the button */
@@ -51,6 +53,22 @@ export interface FloorTour3D {
   start: TourView
   /** Jump-to buttons */
   spots: (TourView & { id: string; label: string })[]
+  /**
+   * Where the camera may go. The splat only looks right near where the drone flew, so the camera is
+   * held inside that band (and inside the room). Ranges are measured along `up`, `a` and `b`
+   * (orthonormal, `a`/`b` horizontal), in scene units.
+   */
+  bounds: {
+    a: Vec3
+    b: Vec3
+    camera: { h: [number, number]; a: [number, number]; b: [number, number] }
+    /** The point the camera orbits around */
+    target: { h: [number, number]; a: [number, number]; b: [number, number] }
+    /** Zoom limits: distance from camera to target */
+    distance: [number, number]
+    /** Tilt limits in degrees from straight down (0) to straight up (180) */
+    tilt: [number, number]
+  }
 }
 
 export interface Facility {
@@ -155,6 +173,8 @@ export const facilities: Record<string, Facility> = {
       { text: 'Stoik Gym is 18+, unless you get permission.' },
     ],
     tour3d: {
+      // Off until the reconstruction stops ghosting (see CLAUDE.md, 3D floor tour). Flip to true to test.
+      enabled: false,
       scene: 'media/3d/roseville.ksplat',
       sizeMb: 24,
       poster: {
@@ -173,6 +193,15 @@ export const facilities: Record<string, Facility> = {
         { id: 'cardio', label: 'Cardio', position: [-0.113, -1.936, 1.273], lookAt: [0.506, -1.634, 4.193] },
         { id: 'desk', label: 'Front desk', position: [0.073, -1.04, 1.311], lookAt: [-1.365, -3.66, 1.046] },
       ],
+      // Floor ≈ -2.1, ceiling ≈ 0.95; the drone flew between ≈ -0.9 and 0.5 (from the COLMAP poses)
+      bounds: {
+        a: [0.15, -0.4, 0.904],
+        b: [-0.402, -0.86, -0.313],
+        camera: { h: [-0.75, 0.6], a: [-11.5, 5.2], b: [-3.1, 3.7] },
+        target: { h: [-2.0, 0.4], a: [-6, 9.2], b: [-5, 6] },
+        distance: [0.4, 4.5],
+        tilt: [30, 100],
+      },
     },
   },
 }

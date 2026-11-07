@@ -8,9 +8,13 @@
   position: fixed;
   inset: 0;
   z-index: 40;
+  /* While loading, the hero still shows through (dimmed); once the scene is ready it's fully opaque,
+     because the WebGL canvas is transparent and the still would otherwise double up with the 3D view. */
   background: rgb(10 10 10 / 0.35);
   outline: none;
 }
+.tour[data-status='ready'],
+.tour[data-status='error'] { background: var(--color-bg); }
 .canvas { position: absolute; inset: 0; touch-action: none; }
 .canvas canvas { display: block; width: 100% !important; height: 100% !important; }
 
