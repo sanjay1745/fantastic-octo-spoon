@@ -34,6 +34,7 @@ export const images = {
 
   // The Gym: facility carousel
   'gallery-floor': { file: '20260801SSM-01.jpg' },
+  'gallery-dumbbells': { file: 'dumbbell area.jpg' },
   'gallery-chest-press': { file: 'chest presses.jpg' },
   'gallery-cable': { file: 'cable machine.jpg' },
   'gallery-coaching-1': { file: '20260220SSM-29.jpg' },

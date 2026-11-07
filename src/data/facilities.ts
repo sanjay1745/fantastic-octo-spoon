@@ -46,6 +46,7 @@ export const facilities: Record<string, Facility> = {
   roseville: {
     gallery: [
       g('gallery-floor', 'Members training across the Stoik Gym floor'),
+      g('gallery-dumbbells', 'Racks of dumbbells and Skelcore plate-loaded machines on the Stoik Gym floor', '27% 50%'),
       g('gallery-chest-press', 'A row of Skelcore plate-loaded chest presses'),
       g('gallery-cable', 'A Skelcore cable station'),
       g('gallery-coaching-1', 'A coach correcting a member’s form at the cable station', '45% 40%'),
