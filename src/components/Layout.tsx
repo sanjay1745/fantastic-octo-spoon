@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Outlet, useLocation } from 'react-router'
 import { useHeadSync } from '../hooks/useHeadSync'
 import { useRevealObserver } from '../hooks/useRevealObserver'
+import { initAnalytics } from '../lib/analytics'
 import Footer from './Footer'
 import Nav from './Nav'
 
@@ -10,6 +11,8 @@ export default function Layout() {
 
   useHeadSync(pathname)
   useRevealObserver(pathname)
+
+  useEffect(() => initAnalytics(), [])
 
   // New page → start at the top (unless linking to an anchor)
   useEffect(() => {

@@ -41,6 +41,7 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
 - **Shop is not a page.** "Shop" in the nav/footer links straight to the Shopify store (`site.shopUrl`). `/shop` exists only as a redirect (meta refresh, noindex, not in the sitemap).
 - Location-specific facility content (carousel photos, highlight sections) lives in `src/data/facilities.ts`, keyed by location slug.
 - "Join Now" → ClubLifePro signup. The URL lives in data (per location), never inline in components.
+- **Analytics:** Google Analytics 4 (`site.gaMeasurementId`; null turns it off). `src/lib/analytics.ts` loads gtag after page load and sends named click events (`tour_click`, `join_click`, `consult_click`, `punch_card_click`, `shop_click`, `phone_click`, `email_click`, `directions_click`, `social_click`, `story_open`) from one delegated listener that classifies links by destination, with `placement` (nav / hero / footer / section heading id). New CTAs are covered automatically if their URL lives in data. Dev logs events to the console instead of sending. Visitors sending Global Privacy Control are not tracked.
 - SEO: per-page title/description, Open Graph images, LocalBusiness/HealthClub JSON-LD generated from location data, `sitemap.xml`, `robots.txt`.
 - Performance: responsive, lazy-loaded images (AVIF/WebP), compressed hero video with a poster image, self-hosted fonts, no heavy libraries.
 - Accessibility: semantic HTML, real alt text, full keyboard navigation, visible focus states, WCAG AA contrast.

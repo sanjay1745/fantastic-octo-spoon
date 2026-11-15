@@ -32,6 +32,11 @@ export const site = {
    * Set to null to hide the reviews section.
    */
   googleMapsApiKey: 'AIzaSyA5g17Jlh-DPDNXt314qf5E6It3O5f03kM' as string | null,
+  /**
+   * Google Analytics 4 measurement ID ("G-XXXXXXXXXX", from Admin → Data streams → web stream).
+   * Not the numeric property ID (414344865). Set to null to turn analytics off. See src/lib/analytics.ts.
+   */
+  gaMeasurementId: 'G-4PQMC92F2S' as string | null,
   founder: {
     name: 'Jeremy Buendia',
     title: "4x Men's Physique Olympia Champion",
