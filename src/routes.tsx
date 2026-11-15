@@ -6,6 +6,7 @@ import Coaching from './pages/Coaching'
 import Home from './pages/Home'
 import LocationDetail from './pages/LocationDetail'
 import Locations from './pages/Locations'
+import Privacy from './pages/Privacy'
 import Memberships from './pages/Memberships'
 import ExternalRedirect from './pages/ExternalRedirect'
 import Stub from './pages/Stub'
@@ -113,6 +114,16 @@ export const routes: AppRoute[] = [
       description: `Book a free tour of ${site.name} in ${city}, or get in touch with our team.`,
     },
     element: <Stub eyebrow="Contact" title="Book a free tour." />,
+  },
+  {
+    path: '/privacy',
+    label: 'Privacy',
+    meta: {
+      path: '/privacy',
+      title: 'Privacy Policy',
+      description: `How the ${site.name} website collects and uses information, and the choices you have.`,
+    },
+    element: <Privacy />,
   },
 ]
 

@@ -1,0 +1,16 @@
+.section { padding-top: clamp(var(--space-7), 6vw, var(--space-8)); }
+
+/* Long-form text: a comfortable reading width */
+.prose { display: grid; gap: var(--space-7); max-width: 44rem; color: var(--color-text-muted); line-height: 1.7; }
+.intro { font-size: var(--text-lg); color: var(--color-text); }
+
+.block { display: grid; gap: var(--space-3); }
+.heading { font-size: var(--text-h4); font-weight: 600; color: var(--color-text); }
+
+.list { display: grid; gap: var(--space-2); padding-left: 1.2rem; list-style: disc; }
+.list li::marker { color: var(--color-red); }
+.list strong { font-weight: 600; color: var(--color-text); }
+
+.contact { display: grid; gap: var(--space-1); justify-items: start; font-style: normal; }
+.contact a { color: var(--color-text); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--color-line-strong); }
+.contact a:hover { text-decoration-color: var(--color-red); }

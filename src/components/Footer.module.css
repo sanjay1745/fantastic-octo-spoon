@@ -57,3 +57,7 @@
   .top { grid-template-columns: 1.6fr repeat(3, 1fr); }
   .brand { grid-column: auto; align-content: start; }
 }
+
+/* Quiet legal link beside the copyright line */
+.legal { margin-left: var(--space-2); color: var(--color-text-muted); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: var(--color-line-strong); }
+.legal:hover { color: var(--color-text); text-decoration-color: var(--color-red); }

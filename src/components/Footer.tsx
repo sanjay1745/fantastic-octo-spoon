@@ -93,7 +93,10 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p suppressHydrationWarning>
-            © {new Date().getFullYear()} {site.name}. All rights reserved.
+            © {new Date().getFullYear()} {site.name}. All rights reserved.{' '}
+            <Link to="/privacy" className={styles.legal}>
+              Privacy
+            </Link>
           </p>
           <p>18+ gym · More locations coming soon</p>
         </div>
