@@ -161,7 +161,11 @@ export default function Coaching() {
           <SectionHeader
             eyebrow="Clubs"
             id="clubs-title"
-            title="Train together. Free with coaching."
+            title={
+              <>
+                <span className={styles.line}>Train together.</span> <span className={styles.line}>Free with coaching.</span>
+              </>
+            }
             lead="In-person group sessions at Stoik Gym, led by Team Stoik coaches and included with online coaching."
           />
           <div className={styles.clubs}>
