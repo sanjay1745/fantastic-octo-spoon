@@ -5,6 +5,7 @@ import About from './pages/About'
 import Coaching from './pages/Coaching'
 import Home from './pages/Home'
 import LocationDetail from './pages/LocationDetail'
+import Locations from './pages/Locations'
 import Memberships from './pages/Memberships'
 import ExternalRedirect from './pages/ExternalRedirect'
 import Stub from './pages/Stub'
@@ -91,7 +92,7 @@ export const routes: AppRoute[] = [
       title: 'Locations',
       description: `${site.name} locations. Now open in ${city}. More coming soon.`,
     },
-    element: <Stub eyebrow="Locations" title="Find your gym." />,
+    element: <Locations />,
   },
   ...locations.map<AppRoute>((l) => ({
     path: `/locations/${l.slug}`,
