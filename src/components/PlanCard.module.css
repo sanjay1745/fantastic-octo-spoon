@@ -80,3 +80,38 @@
 .cta > a { width: 100%; }
 .cta > a + .inPerson { margin-top: var(--space-3); text-align: center; }
 .inPerson { font-size: var(--text-sm); color: var(--color-text-muted); }
+
+/* ---------- Seasonal offer (src/data/season.ts) ---------- */
+/* The plan with the first-month deal: red-to-silver edge so it stands apart */
+.promoCard {
+  background:
+    linear-gradient(var(--color-surface-2), var(--color-surface-2)) padding-box,
+    linear-gradient(160deg, var(--color-red) 0%, #8d9096 55%, #d9dbdf 100%) border-box;
+  box-shadow: 0 0 0 1px rgb(225 37 27 / 0.25), 0 18px 50px -20px rgb(225 37 27 / 0.45);
+}
+.promoCard .badge { background: var(--color-red); color: #fff; }
+.then { font-weight: 500; color: var(--color-text); }
+.wasInline {
+  margin-left: var(--space-1);
+  color: var(--color-text-dim);
+  text-decoration-color: var(--color-red);
+  text-decoration-thickness: 2px;
+}
+/* "$0 enrollment ~~$69~~", same spot on every membership card */
+.enroll {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  width: fit-content;
+}
+.enroll strong { font-weight: 700; color: var(--color-text); }
+.enroll s {
+  color: var(--color-text-dim);
+  text-decoration-color: var(--color-red);
+  text-decoration-thickness: 2px;
+}

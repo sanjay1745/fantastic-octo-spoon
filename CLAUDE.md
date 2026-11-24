@@ -74,6 +74,8 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
   - Family Full Access: $179/mo for up to 3 people, shown as cut from $379, plus $30/mo for each additional person.
   - Student / first responder: $79/mo, month-to-month. Status is verified at sign-up or on the first visit.
   - Card order: Full Access, Family Full Access, Month-to-Month, Student & First Responder.
+  - Enrollment fee: $69 on every membership (`enrollmentFee`).
+  - Black Friday 2026 promo (`season.ts` → `promo`): $0 enrollment on every membership; Full Access is the only plan with a first-month deal, $50 for month one, then $109/mo. End date not yet confirmed.
   - Day pass: $25, sold in person at the club only (no online purchase).
   - 10-visit punch card: $110 for 10 gym visits, never expires. Sold online (Peak Payment link in data) or at the club. Position it as the better-value alternative to day passes.
 - Coaching (PT and online): **no prices on the site.** Pricing is given at a consultation, so coaching CTAs are "Book a consultation".

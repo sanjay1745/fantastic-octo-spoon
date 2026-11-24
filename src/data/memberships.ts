@@ -28,6 +28,9 @@ export interface Plan {
   buyUrl?: string
 }
 
+/** One-time enrollment fee on every membership (USD). Seasonal promos may waive it (see season.ts). */
+export const enrollmentFee = 69
+
 /** Every membership is full access: the whole floor plus the recovery room. */
 const fullAccess = 'Now includes full access to our recovery room.'
 

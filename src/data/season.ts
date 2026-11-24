@@ -8,6 +8,7 @@
  * not on a timer. Offers here must match real pricing in memberships.ts / locations.ts.
  */
 import { primaryLocation } from './locations'
+import { enrollmentFee } from './memberships'
 import { site } from './site'
 
 export type SeasonId = 'black-friday' | 'holiday'
@@ -29,9 +30,18 @@ export interface Season {
   planBadge?: string
   /** Show the gift section on the home page */
   gifts: boolean
+  /** Membership offer, shown on the plan cards (join plans only) */
+  promo?: {
+    /** Enrollment fee during the promo (USD), shown against the normal `enrollmentFee` */
+    enrollment: number
+    /** Discounted first month on one plan */
+    firstMonth?: { planId: string; price: number }
+  }
 }
 
 const fullAccess = primaryLocation.plans.find((p) => p.featured)!
+/** Black Friday: $0 enrollment on every membership, and $50 for the first month of Full Access. */
+const bf = { enrollment: 0, firstMonth: 50 }
 const punchCard = primaryLocation.passes.find((p) => p.id === 'punch-card')!
 
 const seasons: Record<SeasonId, Season> = {
@@ -39,18 +49,19 @@ const seasons: Record<SeasonId, Season> = {
     id: 'black-friday',
     strip: {
       // TODO(owner): add the end date once confirmed, e.g. "Ends Monday."
-      text: `Black Friday: Full Access for $${fullAccess.price}/mo, down from $${fullAccess.wasPrice}.`,
-      short: `Black Friday: Full Access $${fullAccess.price}/mo, was $${fullAccess.wasPrice}`,
+      text: `Black Friday: $${bf.enrollment} enrollment on every membership, and $${bf.firstMonth} for your first month of Full Access.`,
+      short: `Black Friday: $${bf.enrollment} enrollment + $${bf.firstMonth} first month`,
       cta: { href: primaryLocation.joinUrl, label: 'Join Now' },
     },
     hero: {
       eyebrow: 'Black Friday',
       title: 'Black Friday.',
-      lead: `Full Access for $${fullAccess.price}/mo, down from $${fullAccess.wasPrice}. The whole floor and the recovery room. Lock in the rate.`,
+      lead: `$${bf.enrollment} enrollment on every membership (normally $${enrollmentFee}). Start Full Access for $${bf.firstMonth} your first month, then $${fullAccess.price}/mo.`,
       primary: { href: primaryLocation.joinUrl, label: 'Join Now' },
       secondary: { href: '/memberships', label: 'View memberships' },
     },
     planBadge: 'Black Friday',
+    promo: { enrollment: bf.enrollment, firstMonth: { planId: fullAccess.id, price: bf.firstMonth } },
     gifts: true,
   },
   holiday: {
