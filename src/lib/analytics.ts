@@ -35,8 +35,9 @@ export function track(event: string, params: Params = {}) {
   window.gtag?.('event', event, params)
 }
 
-/** Which part of the page a link sits in: "nav", "footer", "hero", or the id of the section's heading. */
+/** Which part of the page a link sits in: "promo_popup", "nav", "footer", "hero", or the id of the section's heading. */
 function placement(el: Element): string {
+  if (el.closest('dialog[data-promo-popup]')) return 'promo_popup'
   // The site nav is the only <header> outside <main> (section headings use <header> too)
   if (!el.closest('main') && el.closest('header')) return 'nav'
   if (el.closest('footer')) return 'footer'

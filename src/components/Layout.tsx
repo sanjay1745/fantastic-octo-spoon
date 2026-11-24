@@ -5,6 +5,7 @@ import { useRevealObserver } from '../hooks/useRevealObserver'
 import { initAnalytics } from '../lib/analytics'
 import Footer from './Footer'
 import Nav from './Nav'
+import PromoPopup from './PromoPopup'
 
 export default function Layout() {
   const { pathname, hash } = useLocation()
@@ -29,6 +30,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <Footer />
+      <PromoPopup />
     </>
   )
 }

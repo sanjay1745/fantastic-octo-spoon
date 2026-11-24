@@ -37,6 +37,16 @@ export interface Season {
     /** Discounted first month on one plan */
     firstMonth?: { planId: string; price: number }
   }
+  /** Promo popup, shown once per visitor per season (see PromoPopup) */
+  popup?: {
+    eyebrow: string
+    title: string
+    /** Offer lines: a bold lead and the detail */
+    offers: { lead: string; detail: string }[]
+    fine?: string
+    primary: SeasonCta
+    secondary: SeasonCta
+  }
 }
 
 const fullAccess = primaryLocation.plans.find((p) => p.featured)!
@@ -62,6 +72,17 @@ const seasons: Record<SeasonId, Season> = {
     },
     planBadge: 'Black Friday',
     promo: { enrollment: bf.enrollment, firstMonth: { planId: fullAccess.id, price: bf.firstMonth } },
+    popup: {
+      eyebrow: 'Black Friday',
+      title: 'Start for less.',
+      offers: [
+        { lead: `$${bf.enrollment} enrollment`, detail: `On every membership. Normally $${enrollmentFee}.` },
+        { lead: `$${bf.firstMonth} first month`, detail: `On Full Access, then $${fullAccess.price}/mo. Recovery room included.` },
+      ],
+      fine: `${fullAccess.name} is a ${fullAccess.term.toLowerCase()}.`,
+      primary: { href: primaryLocation.joinUrl, label: 'Join Now' },
+      secondary: { href: '/memberships', label: 'Compare memberships' },
+    },
     gifts: true,
   },
   holiday: {
