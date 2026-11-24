@@ -53,7 +53,8 @@ export const images = {
   'about-community': { file: 'community.jpg' },
 
   // Coach portraits
-  'coach-cinthia-beltran': { file: 'cinthia.jpg' },
+  'coach-cinthia-beltran': { file: 'CINTHIA new.jpg' },
+  'coach-logan-frushour': { file: 'LOGAN.jpg' },
   'coach-stephanie-pleasas': { file: 'coach steph.jpg' },
   'coach-michael-lopez': { file: 'coach michael.jpg' },
   'coach-mel-renee': { file: 'coach mel pfp.jpg' },
@@ -62,6 +63,8 @@ export const images = {
 
   // Full-bleed
   'final-cta': { file: 'WIDE GYM FLOOR.jpg' },
+  // Coaching page closing banner: members and coaches gathered on the floor for a coaching session
+  'coaching-group': { file: 'group.jpg' },
   'hero-poster': { video: tourVideo, t: 0.5 },
   // The Gym 3D tour: still from the drone video at the tour's start view (frame f_0001)
   'tour-poster': { video: 'Stoik Drone Footage.mp4', t: 0.1 },

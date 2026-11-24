@@ -210,7 +210,7 @@ export default function Coaching() {
         lead="Tell us your goals. We'll match you with the right coach and the right plan."
         primary={{ href: consultFor('coaching'), label: 'Book a free consultation' }}
         join={false}
-        image={media.fitClub}
+        image={media.coachingGroup}
       />
     </>
   )

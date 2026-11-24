@@ -23,14 +23,19 @@
 }
 .content {
   display: grid;
+  min-width: 0;
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--space-5);
   justify-items: start;
   padding: clamp(var(--space-6), 5vw, var(--space-9));
 }
+/* Scales down harder than .display so long words ("consultation.") fit a 390px phone */
+.content h2 { min-width: 0; font-size: clamp(2.25rem, 9.5vw, 8rem); overflow-wrap: break-word; }
 .lead { max-width: 32rem; font-size: var(--text-lg); color: rgb(255 255 255 / 0.8); }
 .actions { display: flex; flex-wrap: wrap; gap: var(--space-3); }
 
 @media (max-width: 479px) {
   .actions { width: 100%; }
-  .actions > * { flex: 1 1 100%; }
+  .actions > * { flex: 1 1 100%; white-space: normal; text-align: center; }
+  .content { padding: var(--space-6) var(--space-5); }
 }
