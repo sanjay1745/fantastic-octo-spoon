@@ -62,7 +62,7 @@ export const media = {
   compression: slot(null, 'Leg compression sleeves in use', 'A member relaxing in leg compression sleeves'),
   posing: slot('media/posing', 'Posing room', 'A coach guiding a physique athlete through posing at Stoik Gym', '4 / 5', '50% 35%'),
   fuel: slot('media/fuel', 'Supplement store + drinks', 'The supplement wall and front desk at Stoik Gym', '4 / 5', '62% 50%'),
-  mealPrep: slot(null, 'Meal prep cooler / packaged meals', 'Prepared meals available at Stoik Gym'),
+  mealPrep: slot('media/meal-prep', 'Meal prep', 'Nine Full & Fit meal preps: chicken and hummus, Korean beef, pineapple tri-tip, teriyaki chicken, pico beef bowl, chicken with naan, chicken stir fry, turkey taco bowl and bruschetta pasta', '4 / 5', '50% 50%'),
   apparel: slot('media/apparel', 'Stoik apparel', 'Members wearing Stoik apparel: tanks, tees and the Stoik Gym hat', '16 / 10', '42% 40%'),
 
   coachingHero: slot('media/coaching-hero', 'Coaching montage', 'Team Stoik coaches cueing members through a cable kickback, a pulldown and a leg extension', '16 / 10', '50% 45%'),

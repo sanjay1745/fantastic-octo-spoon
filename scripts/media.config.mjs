@@ -31,6 +31,8 @@ export const images = {
   'equipment-lateral-raise': { file: 'skelcore lateral raise.jpg' },
   'posing-room': { file: 'posing room.jpg' },
   'pro-shop': { file: 'evogen protein.jpg' },
+  // 3x3 grid of nine Full & Fit meals, cropped and color-graded from their Instagram grid (mealpreps.png)
+  'meal-prep': { file: 'meal prep grid.jpg' },
 
   // The Gym: facility carousel
   'gallery-floor': { file: '20260801SSM-01.jpg' },
