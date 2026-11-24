@@ -15,7 +15,13 @@ import styles from './GoogleReviews.module.css'
  *
  * Dev only: add `?reviews=sample` to the URL to preview the design with labeled sample cards.
  */
-export default function GoogleReviews({ location = primaryLocation }: { location?: Location }) {
+interface Props {
+  location?: Location
+  eyebrow?: string
+  title?: string
+}
+
+export default function GoogleReviews({ location = primaryLocation, eyebrow = 'Reviews', title = 'Members say it best.' }: Props) {
   const sentinel = useRef<HTMLDivElement>(null)
   const [data, setData] = useState<GoogleReviewsResult | null>(null)
 
@@ -67,7 +73,7 @@ export default function GoogleReviews({ location = primaryLocation }: { location
     <section className={`section ${styles.section}`} aria-labelledby="reviews-title">
       <div className="container">
         <div className={styles.head}>
-          <SectionHeader eyebrow="Reviews" id="reviews-title" title="Members say it best." lead={summary} />
+          <SectionHeader eyebrow={eyebrow} id="reviews-title" title={title} lead={summary} />
           {data.mapsUrl && (
             <SmartLink href={data.mapsUrl} className={styles.all}>
               See all reviews on Google

@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import LocationDetail from './pages/LocationDetail'
 import Locations from './pages/Locations'
 import Privacy from './pages/Privacy'
+import Reviews from './pages/Reviews'
 import Memberships from './pages/Memberships'
 import ExternalRedirect from './pages/ExternalRedirect'
 import Stub from './pages/Stub'
@@ -62,6 +63,16 @@ export const routes: AppRoute[] = [
       description: `60+ pieces of Skelcore equipment, a recovery room with infrared sauna and two cold plunges, a private posing room and a pro shop. Inside ${site.name} ${primaryLocation.name}.`,
     },
     element: <TheGym />,
+  },
+  {
+    path: '/reviews',
+    label: 'Reviews',
+    meta: {
+      path: '/reviews',
+      title: 'Reviews',
+      description: `What members say about ${site.name} in ${city}: Google reviews and coaching client stories.`,
+    },
+    element: <Reviews />,
   },
   {
     // Not a page: /shop forwards to the Shopify store (kept so old links and bios still work)
@@ -143,7 +154,7 @@ export interface NavItem {
 
 /** Primary navigation, in order */
 export const navRoutes: NavItem[] = [
-  ...['/memberships', '/coaching', '/the-gym', '/about', '/locations']
+  ...['/memberships', '/coaching', '/the-gym', '/reviews', '/about', '/locations']
     .map((p) => routes.find((r) => r.path === p)!)
     .map((r) => ({ to: r.path, label: r.label! })),
   { to: site.shopUrl, label: 'Shop', external: true },

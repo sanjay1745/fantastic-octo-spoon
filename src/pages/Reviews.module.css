@@ -1,0 +1,15 @@
+.heroActions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-3); }
+
+.stories { border-top: 1px solid var(--color-line); }
+.grid { display: grid; gap: var(--space-4); }
+.cta { margin-top: var(--space-7); }
+
+@media (min-width: 700px) {
+  .grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1100px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 479px) {
+  .heroActions > * { flex: 1 1 100%; }
+}

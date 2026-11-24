@@ -21,7 +21,7 @@ export default function Results() {
         </ul>
 
         {more > 0 && (
-          <SmartLink href="/coaching#stories" className={styles.moreLink}>
+          <SmartLink href="/reviews#stories" className={styles.moreLink}>
             Read {more} more client stories
           </SmartLink>
         )}
