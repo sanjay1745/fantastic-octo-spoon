@@ -5,6 +5,7 @@ import { season } from '../data/season'
 import { site } from '../data/site'
 import { joinHref, tourHref } from '../lib/cta'
 import { navRoutes } from '../routes'
+import Bow from './Bow'
 import Button from './Button'
 import Logo from './Logo'
 import styles from './Nav.module.css'
@@ -47,6 +48,7 @@ export default function Nav() {
     <header className={styles.nav} data-scrolled={scrolled || open ? '' : undefined}>
       {season && <SeasonStrip season={season} />}
       <div className={styles.bar}>
+        {season && <Bow className={styles.bow} />}
         <Link to="/" className={styles.brand} aria-label={`${site.name} home`}>
           <Logo variant="wordmark" label={false} className={styles.wordmark} />
         </Link>

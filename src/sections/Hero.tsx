@@ -23,7 +23,7 @@ interface Props {
   meta?: boolean
   /** Interactive 3D floor. Replaces the video with its still and adds an "Explore in 3D" button. */
   tour?: FloorTour3D
-  /** Seasonal styling hook (see src/data/season.ts). 'holiday' adds slow snowfall over the video. */
+  /** Seasonal styling hook (see src/data/season.ts). Any season adds slow snowfall over the video. */
   season?: SeasonId
 }
 
@@ -98,7 +98,7 @@ export default function Hero({ eyebrow, title = 'Be Stoik.', lead, actions, meta
           </>
         )}
         <div className={styles.overlay} />
-        {season === 'holiday' && <div className={styles.snow} aria-hidden="true" />}
+        {season && <div className={styles.snow} aria-hidden="true" />}
       </div>
 
       {tour && tourOpen && <FloorTour tour={tour} onClose={closeTour} />}

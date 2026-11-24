@@ -135,3 +135,18 @@
   .links { display: block; }
   .toggle, .menu { display: none; }
 }
+
+/* Seasonal gift bow on the pill's top-left corner (decorative) */
+.bow {
+  position: absolute;
+  top: -1.15rem;
+  left: -0.85rem;
+  width: 3.25rem;
+  height: auto;
+  transform: rotate(-14deg);
+  filter: drop-shadow(0 3px 6px rgb(0 0 0 / 0.5));
+  pointer-events: none;
+}
+@media (max-width: 479px) {
+  .bow { width: 2.75rem; top: -0.95rem; left: -0.6rem; }
+}
