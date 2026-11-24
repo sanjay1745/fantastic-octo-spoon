@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { formatPrice, type Plan } from '../data/memberships'
+import { season } from '../data/season'
 import Button from './Button'
 import styles from './PlanCard.module.css'
 
@@ -15,7 +16,7 @@ export default function PlanCard({ plan, joinUrl, style, extra }: Props) {
   const { amount, per } = formatPrice(plan)
   return (
     <article className={`${styles.card} ${plan.featured ? styles.featured : ''}`} data-reveal style={style}>
-      {plan.featured && <p className={styles.badge}>Best value</p>}
+      {plan.featured && <p className={styles.badge}>{(plan.purchase === 'join' && season?.planBadge) || 'Best value'}</p>}
       <h3 className={styles.name}>{plan.name}</h3>
       <p className={`${styles.price} ${plan.wasPrice !== undefined ? styles.hasWas : ''}`}>
         {plan.wasPrice !== undefined && (

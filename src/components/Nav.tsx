@@ -1,12 +1,14 @@
 import { useEffect, useId, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router'
 import { formatAddressLines, formatHours, primaryLocation, telHref } from '../data/locations'
+import { season } from '../data/season'
 import { site } from '../data/site'
 import { joinHref, tourHref } from '../lib/cta'
 import { navRoutes } from '../routes'
 import Button from './Button'
 import Logo from './Logo'
 import styles from './Nav.module.css'
+import SeasonStrip from './SeasonStrip'
 
 export default function Nav() {
   const [open, setOpen] = useState(false)
@@ -43,6 +45,7 @@ export default function Nav() {
 
   return (
     <header className={styles.nav} data-scrolled={scrolled || open ? '' : undefined}>
+      {season && <SeasonStrip season={season} />}
       <div className={styles.bar}>
         <Link to="/" className={styles.brand} aria-label={`${site.name} home`}>
           <Logo variant="wordmark" label={false} className={styles.wordmark} />

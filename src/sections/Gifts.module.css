@@ -1,0 +1,90 @@
+.gifts { padding-top: 0; }
+
+.grid { display: grid; gap: var(--space-4); }
+
+.card {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+}
+.body {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: var(--space-3);
+  padding: var(--space-5);
+}
+.body > :last-child { margin-top: var(--space-2); }
+.price {
+  font-family: var(--font-display);
+  font-stretch: var(--font-display-stretch);
+  font-weight: 800;
+  font-size: var(--text-h3);
+  line-height: 1;
+}
+
+.media { aspect-ratio: 16 / 10; }
+
+/* The punch card itself, drawn as a ticket with ten punches */
+.ticket {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: end;
+  gap: var(--space-1) var(--space-3);
+  aspect-ratio: 16 / 10;
+  padding: var(--space-6);
+  background:
+    radial-gradient(120% 90% at 85% 10%, rgb(255 255 255 / 0.08) 0%, transparent 60%),
+    var(--color-surface-2);
+  border-bottom: 1px solid transparent;
+  border-image: var(--color-silver-gradient) 1;
+}
+.ticketCount {
+  font-family: var(--font-display);
+  font-stretch: var(--font-display-stretch);
+  font-weight: 800;
+  font-size: clamp(4.5rem, 3rem + 7vw, 8rem);
+  line-height: 0.85;
+  background: var(--color-silver-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.ticketLabel {
+  font-size: var(--text-eyebrow);
+  font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  padding-bottom: 0.4rem;
+}
+.punches {
+  position: absolute;
+  top: var(--space-6);
+  left: var(--space-6);
+  right: var(--space-6);
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 0.4rem;
+  max-width: 22rem;
+}
+.punches i {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid var(--color-line-strong);
+}
+.punches i:first-child { background: var(--color-red); border-color: var(--color-red); }
+
+.note {
+  margin-top: var(--space-5);
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 900px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+}

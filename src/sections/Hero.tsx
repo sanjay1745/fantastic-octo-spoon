@@ -5,6 +5,7 @@ import Logo from '../components/Logo'
 import Media from '../components/Media'
 import { Eyebrow } from '../components/SectionHeader'
 import type { FloorTour3D } from '../data/facilities'
+import type { SeasonId } from '../data/season'
 import { formatHours, primaryLocation } from '../data/locations'
 import { media } from '../data/media'
 import { useReducedMotion } from '../hooks/useReducedMotion'
@@ -22,10 +23,12 @@ interface Props {
   meta?: boolean
   /** Interactive 3D floor. Replaces the video with its still and adds an "Explore in 3D" button. */
   tour?: FloorTour3D
+  /** Seasonal styling hook (see src/data/season.ts). 'holiday' adds slow snowfall over the video. */
+  season?: SeasonId
 }
 
 /** Full-bleed hero: the tour video loop (Home), or a still that opens into the 3D floor (The Gym). */
-export default function Hero({ eyebrow, title = 'Be Stoik.', lead, actions, meta = true, tour }: Props) {
+export default function Hero({ eyebrow, title = 'Be Stoik.', lead, actions, meta = true, tour, season }: Props) {
   const video = media.heroVideo
   const ref = useRef<HTMLVideoElement>(null)
   const ctasRef = useRef<HTMLDivElement>(null)
@@ -51,7 +54,12 @@ export default function Hero({ eyebrow, title = 'Be Stoik.', lead, actions, meta
   const loc = primaryLocation
 
   return (
-    <section className={styles.hero} aria-labelledby="hero-title" data-tour-open={tourOpen ? '' : undefined}>
+    <section
+      className={styles.hero}
+      aria-labelledby="hero-title"
+      data-tour-open={tourOpen ? '' : undefined}
+      data-season={season}
+    >
       <div className={styles.bg}>
         {tour ? (
           <Media slot={tour.poster} fill priority sizes="100vw" />
@@ -90,6 +98,7 @@ export default function Hero({ eyebrow, title = 'Be Stoik.', lead, actions, meta
           </>
         )}
         <div className={styles.overlay} />
+        {season === 'holiday' && <div className={styles.snow} aria-hidden="true" />}
       </div>
 
       {tour && tourOpen && <FloorTour tour={tour} onClose={closeTour} />}

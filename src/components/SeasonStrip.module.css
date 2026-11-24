@@ -1,0 +1,88 @@
+.strip {
+  pointer-events: auto;
+  display: grid;
+  grid-template-rows: 1fr;
+  max-width: var(--container);
+  margin: 0 auto var(--space-2);
+  transition: grid-template-rows var(--dur-base) var(--ease-out), opacity var(--dur-base) ease, margin var(--dur-base) ease;
+}
+/* Collapse on scroll (the nav sets data-scrolled) */
+[data-scrolled] > .strip {
+  grid-template-rows: 0fr;
+  opacity: 0;
+  margin-bottom: 0;
+  pointer-events: none;
+}
+
+.inner {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  min-height: 0;
+  padding: 0.45rem 1rem;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-pill);
+  background: rgb(14 14 14 / 0.72);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  text-align: center;
+}
+[data-scrolled] > .strip .inner { padding-block: 0; border-width: 0; }
+
+/* Black Friday: silver hairline. Holidays: frosted. */
+.strip[data-season='black-friday'] .inner {
+  border-color: transparent;
+  background:
+    linear-gradient(rgb(10 10 10 / 0.9), rgb(10 10 10 / 0.9)) padding-box,
+    var(--color-silver-gradient) border-box;
+}
+.strip[data-season='holiday'] .inner {
+  background: rgb(30 32 36 / 0.72);
+  border-color: rgb(255 255 255 / 0.2);
+}
+
+.dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--color-red);
+  flex-shrink: 0;
+}
+.text { color: var(--color-text); }
+.short { display: none; }
+.cta {
+  font-weight: 600;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-red);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+.inner:hover .cta { color: var(--color-silver); }
+.inner:hover .text { color: var(--color-silver); }
+
+@media (max-width: 479px) {
+  .inner { border-radius: var(--radius-md); font-size: 0.75rem; }
+  .dot { display: none; }
+  /* The nav right below already has Join Now; the strip itself is the link */
+  .ctaLabel, .long { display: none; }
+  .short { display: inline; }
+  .inner { flex-wrap: nowrap; }
+  .cta { text-decoration: none; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .dot { animation: pulse 2.4s ease-in-out infinite; }
+}
+@keyframes pulse {
+  50% { opacity: 0.35; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .strip { transition: none; }
+}
