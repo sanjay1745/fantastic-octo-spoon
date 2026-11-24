@@ -80,6 +80,7 @@ export const media = {
 
   locationExterior: slot(null, 'Storefront at Roseville Square · dusk', 'The Stoik Gym storefront at Roseville Square', '16 / 10'),
   finalCta: slot('media/final-cta', 'Wide floor shot', 'The Stoik Gym training floor', '16 / 9'),
+  coachingGroup: slot('media/coaching-group', 'Coaching session', 'Members and Team Stoik coaches gathered on the Stoik Gym floor during a coaching session', '16 / 9', '50% 50%'),
 }
 
 export type MediaKey = keyof typeof media

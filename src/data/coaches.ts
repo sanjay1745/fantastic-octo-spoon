@@ -39,11 +39,11 @@ const coach = (slug: string, name: string, hasPhoto = false, focus?: string): Co
 })
 
 export const coaches: Coach[] = [
-  coach('cinthia-beltran', 'Cinthia Beltran', true, '64% 40%'),
+  coach('cinthia-beltran', 'Cinthia Beltran', true, '40% 30%'),
   coach('michael-lopez', 'Michael Lopez', true),
   coach('mel-renee', 'Mel Renee', true),
   coach('stephanie-pleasas', 'Stephanie Pleasas', true, '50% 35%'),
-  coach('logan-frushour', 'Logan Frushour'),
+  coach('logan-frushour', 'Logan Frushour', true, '58% 32%'),
   coach('tyler-brey', 'Tyler Brey', true),
   coach('kevin-zaragoza', 'Kevin Zaragoza', true),
 ]

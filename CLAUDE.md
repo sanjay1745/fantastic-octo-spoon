@@ -76,7 +76,7 @@ Marketing site for **Stoik Gym**, a premium boutique gym in Roseville, CA. Stati
   - Day pass: $25, sold in person at the club only (no online purchase).
   - 10-visit punch card: $110 for 10 gym visits, never expires. Sold online (Peak Payment link in data) or at the club. Position it as the better-value alternative to day passes.
 - Coaching (PT and online): **no prices on the site.** Pricing is given at a consultation, so coaching CTAs are "Book a consultation".
-- Coaching team (each gets a profile card/spotlight): Cinthia Beltran, Michael Lopez, Mel Renee, Stephanie Pleasas, Logan Frushour, Tyler Brey, Kevin Zaragoza. Bios and specialties are still to come; Logan has no photo yet.
+- Coaching team (each gets a profile card/spotlight): Cinthia Beltran, Michael Lopez, Mel Renee, Stephanie Pleasas, Logan Frushour, Tyler Brey, Kevin Zaragoza. Bios and specialties are still to come.
 - More locations are coming.
 
 ## Working conventions
