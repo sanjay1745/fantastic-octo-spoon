@@ -63,7 +63,8 @@ export const privacy = {
       title: 'Services run by others',
       body: ['Some parts of the site are provided by other companies. When you use them, they receive information directly from you or your browser, and their own privacy policies apply.'],
       list: [
-        { label: 'Tour bookings and consultation forms:', text: 'ClubLifePro.' },
+        { label: 'Tour bookings:', text: 'ClubLifePro.' },
+        { label: 'Coaching consultation form:', text: 'Typeform.' },
         { label: 'Membership sign-up and payments:', text: 'Peak Payment.' },
         { label: 'Apparel store:', text: 'Shopify, at stoikathletix.com.' },
         { label: 'Map and reviews:', text: 'Google Maps. The embedded map and Google reviews load from Google, which receives your IP address.' },

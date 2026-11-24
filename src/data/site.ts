@@ -20,10 +20,10 @@ export const site = {
    */
   tourUrl: 'https://link.clublifepro.com/widget/booking/oY43OaIkWwVuXrB1QIhk' as string | null,
   /**
-   * Coaching consultation form (ClubLifePro). Every "Book a consultation" CTA uses it.
+   * Free coaching consultation form (Typeform). Every "Book a consultation" CTA uses it.
    * Set to null to fall back to the on-site /contact page.
    */
-  consultUrl: 'https://link.clublifepro.com/widget/form/nm4QLUVVZajiQcyjb5mB' as string | null,
+  consultUrl: 'https://form.typeform.com/to/jOGf44cI' as string | null,
   /**
    * Google Maps Platform browser key, used only to load live Google reviews (Places API).
    * This key ships to the browser by design. In Google Cloud, restrict it to:

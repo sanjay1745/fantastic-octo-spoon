@@ -8,7 +8,7 @@ export const tourHref = site.tourUrl ?? '/contact'
 export const joinHref = primaryLocation.joinUrl
 
 /**
- * "Book a consultation" for coaching: the ClubLifePro consultation form.
+ * "Book a consultation" for coaching: the Typeform consultation form.
  * Every interest shares one form today; the interest is kept so a per-program form can be added later.
  * Without a form link, falls back to the contact page with the interest preselected.
  */
