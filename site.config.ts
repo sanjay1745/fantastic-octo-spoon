@@ -9,6 +9,6 @@
  * is derived from these two values.
  */
 export const siteConfig = {
-  origin: 'https://sanjay1745.github.io',
-  base: '/fantastic-octo-spoon/',
+  origin: 'https://stoikgym.com',
+  base: '/',
 } as const
