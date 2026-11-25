@@ -6,6 +6,7 @@ import SectionHeader from '../components/SectionHeader'
 import { faqsFor } from '../data/faq'
 import { primaryLocation } from '../data/locations'
 import { punchCardSavings } from '../data/memberships'
+import { seasonalPass } from '../data/season'
 import { joinHref, tourHref } from '../lib/cta'
 import FinalCta from '../sections/FinalCta'
 import styles from './Memberships.module.css'
@@ -57,7 +58,7 @@ export default function Memberships() {
                 plan={p}
                 joinUrl={loc.joinUrl}
                 style={delay(i)}
-                extra={p.id === 'punch-card' ? punchCardSavings(loc.passes) : undefined}
+                extra={p.id === 'punch-card' ? punchCardSavings(loc.passes.map(seasonalPass)) : undefined}
               />
             ))}
           </div>

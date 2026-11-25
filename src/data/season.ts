@@ -8,7 +8,7 @@
  * not on a timer. Offers here must match real pricing in memberships.ts / locations.ts.
  */
 import { primaryLocation } from './locations'
-import { enrollmentFee } from './memberships'
+import { enrollmentFee, type Plan } from './memberships'
 import { site } from './site'
 
 export type SeasonId = 'black-friday' | 'holiday'
@@ -37,6 +37,8 @@ export interface Season {
     /** Discounted first month on one plan */
     firstMonth?: { planId: string; price: number }
   }
+  /** Promo prices on passes, keyed by pass id (e.g. the punch card). The normal price shows struck through. */
+  passPrices?: Record<string, number>
   /** Promo popup, shown once per visitor per season (see PromoPopup) */
   popup?: {
     eyebrow: string
@@ -50,9 +52,9 @@ export interface Season {
 }
 
 const fullAccess = primaryLocation.plans.find((p) => p.featured)!
-/** Black Friday: $0 enrollment on every membership, and $50 for the first month of Full Access. */
-const bf = { enrollment: 0, firstMonth: 50 }
 const punchCard = primaryLocation.passes.find((p) => p.id === 'punch-card')!
+/** Black Friday: $0 enrollment on every membership, $50 for the first month of Full Access, and the punch card for $79. */
+const bf = { enrollment: 0, firstMonth: 50, punchCard: 79 }
 
 const seasons: Record<SeasonId, Season> = {
   'black-friday': {
@@ -72,12 +74,14 @@ const seasons: Record<SeasonId, Season> = {
     },
     planBadge: 'Black Friday',
     promo: { enrollment: bf.enrollment, firstMonth: { planId: fullAccess.id, price: bf.firstMonth } },
+    passPrices: { [punchCard.id]: bf.punchCard },
     popup: {
       eyebrow: 'Black Friday',
       title: 'Start for less.',
       offers: [
         { lead: `$${bf.enrollment} enrollment`, detail: `On every membership. Normally $${enrollmentFee}.` },
         { lead: `$${bf.firstMonth} first month`, detail: `On Full Access, then $${fullAccess.price}/mo. Recovery room included.` },
+        { lead: `$${bf.punchCard} punch card`, detail: `${punchCard.visits} visits that never expire. Normally $${punchCard.price}.` },
       ],
       fine: `${fullAccess.name} is a ${fullAccess.term.toLowerCase()}.`,
       primary: { href: primaryLocation.joinUrl, label: 'Join Now' },
@@ -105,13 +109,22 @@ const seasons: Record<SeasonId, Season> = {
 
 export const season: Season | null = activeSeason ? seasons[activeSeason] : null
 
+/** A pass with the active season's promo price applied; its normal price becomes the struck-through `wasPrice`. */
+export function seasonalPass(plan: Plan): Plan {
+  const price = plan.purchase === 'join' ? undefined : season?.passPrices?.[plan.id]
+  return price === undefined ? plan : { ...plan, price, wasPrice: plan.price }
+}
+
+const giftCard = seasonalPass(punchCard)
+
 /** Gift ideas, all real products. */
 export const gifts = {
   title: 'Gifts that get used.',
   lead: 'For the person who never misses a session, or the one you want to bring along.',
   punchCard: {
     name: punchCard.name,
-    price: punchCard.price,
+    price: giftCard.price,
+    wasPrice: giftCard.wasPrice,
     summary: `${punchCard.visits} visits to the gym. Never expires. Buy online or at the front desk.`,
     href: punchCard.buyUrl,
   },

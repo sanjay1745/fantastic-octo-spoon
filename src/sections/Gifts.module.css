@@ -26,6 +26,17 @@
   line-height: 1;
 }
 
+.was {
+  margin-right: var(--space-2);
+  font-family: var(--font-body);
+  font-stretch: normal;
+  font-size: var(--text-base, 1rem);
+  font-weight: 500;
+  color: var(--color-text-dim);
+  text-decoration-color: var(--color-red);
+  text-decoration-thickness: 2px;
+  vertical-align: middle;
+}
 .media { aspect-ratio: 16 / 10; }
 
 /* The punch card itself, drawn as a ticket with ten punches */

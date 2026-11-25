@@ -1,6 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react'
 import { enrollmentFee, formatPrice, type Plan } from '../data/memberships'
-import { season } from '../data/season'
+import { season, seasonalPass } from '../data/season'
 import Button from './Button'
 import styles from './PlanCard.module.css'
 
@@ -12,15 +12,18 @@ interface Props {
   extra?: ReactNode
 }
 
-export default function PlanCard({ plan, joinUrl, style, extra }: Props) {
+export default function PlanCard({ plan: basePlan, joinUrl, style, extra }: Props) {
+  // Seasonal pass price (e.g. Black Friday punch card): normal price shows struck through
+  const plan = seasonalPass(basePlan)
+  const passPromo = plan !== basePlan
   const { amount, per } = formatPrice(plan)
   // Seasonal membership offer (season.ts): applies to join plans only, not passes
   const promo = plan.purchase === 'join' ? season?.promo : undefined
   const firstMonth = promo?.firstMonth?.planId === plan.id ? promo.firstMonth.price : undefined
-  const classes = [styles.card, plan.featured && styles.featured, firstMonth !== undefined && styles.promoCard]
+  const classes = [styles.card, plan.featured && styles.featured, firstMonth !== undefined && styles.promoCard, passPromo && styles.passPromo]
   return (
     <article className={classes.filter(Boolean).join(' ')} data-reveal style={style}>
-      {plan.featured && <p className={styles.badge}>{(plan.purchase === 'join' && season?.planBadge) || 'Best value'}</p>}
+      {plan.featured && <p className={styles.badge}>{((plan.purchase === 'join' || passPromo) && season?.planBadge) || 'Best value'}</p>}
       <h3 className={styles.name}>{plan.name}</h3>
       {firstMonth !== undefined ? (
         <>

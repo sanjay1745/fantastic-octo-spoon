@@ -115,3 +115,5 @@
   text-decoration-color: var(--color-red);
   text-decoration-thickness: 2px;
 }
+/* A pass on seasonal sale: red badge, no glow (the glow stays with the Full Access offer) */
+.passPromo .badge { background: var(--color-red); color: #fff; }

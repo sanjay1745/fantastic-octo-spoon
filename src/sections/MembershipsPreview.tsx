@@ -3,13 +3,15 @@ import PlanCard from '../components/PlanCard'
 import SectionHeader from '../components/SectionHeader'
 import { formatPrice, punchCardSavings } from '../data/memberships'
 import { primaryLocation as loc } from '../data/locations'
+import { seasonalPass } from '../data/season'
 import { tourHref } from '../lib/cta'
 import styles from './MembershipsPreview.module.css'
 
 /** The pass we steer visitors toward (punch card), and the rest (day pass). */
-const lead = loc.passes.find((p) => p.featured) ?? loc.passes[0]
-const others = loc.passes.filter((p) => p !== lead)
-const savings = punchCardSavings(loc.passes)
+const passes = loc.passes.map(seasonalPass)
+const lead = passes.find((p) => p.featured) ?? passes[0]
+const others = passes.filter((p) => p !== lead)
+const savings = punchCardSavings(passes)
 
 export default function MembershipsPreview() {
   return (
@@ -37,7 +39,15 @@ export default function MembershipsPreview() {
               <p className={styles.leadTerm}>{lead.term}</p>
               {savings && lead.id === 'punch-card' && <p className={styles.savings}>{savings}</p>}
             </div>
-            <p className={styles.leadPrice}>{formatPrice(lead).amount}</p>
+            <p className={styles.leadPrice}>
+              {lead.wasPrice !== undefined && (
+                <s className={styles.was}>
+                  <span className="visually-hidden">Was </span>${lead.wasPrice}
+                  <span className="visually-hidden">, now</span>
+                </s>
+              )}
+              {formatPrice(lead).amount}
+            </p>
             <div className={styles.leadBuy}>
               {lead.purchase === 'online' && lead.buyUrl ? (
                 <>

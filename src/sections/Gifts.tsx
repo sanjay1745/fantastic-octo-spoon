@@ -26,7 +26,15 @@ export default function Gifts() {
             </div>
             <div className={styles.body}>
               <h3 className="h3">{punchCard.name}</h3>
-              <p className={styles.price}>${punchCard.price}</p>
+              <p className={styles.price}>
+                {punchCard.wasPrice !== undefined && (
+                  <s className={styles.was}>
+                    <span className="visually-hidden">Was </span>${punchCard.wasPrice}
+                    <span className="visually-hidden">, now</span>
+                  </s>
+                )}
+                ${punchCard.price}
+              </p>
               <p className="muted">{punchCard.summary}</p>
               {punchCard.href && (
                 <Button href={punchCard.href} variant="light" arrow>
